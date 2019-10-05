@@ -7,26 +7,21 @@ import Canvas from './components/Canvas'
 
 const App = () => {
 
+  const baseurl = 'https://vast-backend.herokuapp.com/'
+
   const render_canvas = () => {
-    ReactDOM.render(<Canvas line={initial_line} choices={choices} filename={initial_filename} />, document.getElementById('root'))
+    ReactDOM.render(<Canvas baseurl={baseurl} />, document.getElementById('root'))
   }
-
-  const initial_line = 'Hello young fellow, can you hear me?'
-
-  const choices = [
-    'Perfectly.',
-    'No.',
-    'Remain silent.'
-  ]
-
-  const initial_filename = 'start'
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={vast} className="App-logo" alt="logo" />
         <h1>Vast</h1>
-        <Button text='Start' handleClick={render_canvas} />
+        <Button text='Start' handleClick={() => {
+          new Audio(baseurl + 'lines/start.wav').play()
+          render_canvas()
+        }} />
         <p>(Turn on sound)</p>
       </header>
     </div>
