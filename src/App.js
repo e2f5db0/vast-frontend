@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import logo from './logo.svg'
+import vast from './vast.gif'
 import './App.css'
 import Button from './components/Button'
 import Canvas from './components/Canvas'
@@ -24,7 +24,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={vast} className="App-logo" alt="logo" />
         <h1>Vast</h1>
         <Button text='Start' handleClick={render_canvas} />
         <p>(Turn on sound)</p>
