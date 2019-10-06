@@ -39,11 +39,12 @@ const Canvas = ({ baseurl }) => {
                             next_line('left')
                             return
                         }
-                        next_line()
+                        next_line(path)
                     }} />
                     <Button text={choices[1]} handleClick={() => {
                         if (path === '') {
                             setPath('center')
+                            next_line('center')
                             return
                         }
                         next_line(path)
