@@ -7,12 +7,13 @@ import Button from './Button'
 
 const Canvas = ({ baseurl }) => {
 
-    const [line, setLine] = useState('That was rather unpleasant. Do you believe they will fall in the end?')
-    const [choices, setChoices] = useState(['I hope so', 'No.', 'Remain silent'])
-    const [index, setIndex] = useState('1')
+    const [line, setLine] = useState('That was rather unpleasant to watch. Do you believe they will fall in the end?')
+    const [choices, setChoices] = useState(['I hope so.', 'No.', 'Remain silent'])
+    const [index, setIndex] = useState(1)
+    const [path, setPath] = useState('')
 
-    const left_path = async () => {
-        const l = await axios.get(baseurl + 'left-path/' + index)
+    const next_line = async (path) => {
+        const l = await axios.get(baseurl + path + '-path/' + String(index))
         const choices = [
             l.data.choice1,
             l.data.choice2,
@@ -20,16 +21,8 @@ const Canvas = ({ baseurl }) => {
         ]
         setLine(l.data.text)
         setChoices(choices)
-        new Audio(baseurl + 'lines/left_path' + index + '.wav').play()
+        new Audio(baseurl + 'lines/' + path + '_path' + String(index) + '.wav').play()
         setIndex(index + 1)
-    }
-
-    const center_path = async () => {
-
-    }
-
-    const right_path = async () => {
-
     }
 
     return (
@@ -40,9 +33,29 @@ const Canvas = ({ baseurl }) => {
                     <Line text={line} />
                 </div>
                 <div className='Choices'>
-                    <Button text={choices[0]} handleClick={left_path} />
-                    <Button text={choices[1]} handleClick={center_path} />
-                    <Button text={choices[2]} handleClick={right_path} />
+                    <Button text={choices[0]} handleClick={() => {
+                        if (path === '') {
+                            setPath('left')
+                            next_line('left')
+                            return
+                        }
+                        next_line()
+                    }} />
+                    <Button text={choices[1]} handleClick={() => {
+                        if (path === '') {
+                            setPath('center')
+                            return
+                        }
+                        next_line(path)
+                    }} />
+                    <Button text={choices[2]} handleClick={() => {
+                        if (path === '') {
+                            setPath('right')
+                            next_line('right')
+                            return
+                        }
+                        next_line(path)
+                    }} />
                 </div>
             </div>
         </div>
