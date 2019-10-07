@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+import ReactDOM from 'react-dom'
 import '../App.css'
 import axios from 'axios'
 import Header from './Header'
 import Line from './Line'
 import Button from './Button'
+import LeftEnd from './LeftEnd'
 
 const Canvas = ({ baseurl }) => {
 
@@ -19,10 +21,24 @@ const Canvas = ({ baseurl }) => {
             l.data.choice2,
             l.data.choice3
         ]
-        setLine(l.data.text)
-        setChoices(choices)
+        const text = l.data.text
+
+        if (path === 'left' && index === 36) {
+            left_end(text)
+        }
+
+        update_states(choices, text)
         new Audio(baseurl + 'lines/' + path + '_path' + String(index) + '.wav').play()
+    }
+
+    const update_states = (choices, text) => {
+        setLine(text)
+        setChoices(choices)
         setIndex(index + 1)
+    }
+
+    const left_end = (text) => {
+        ReactDOM.render(<LeftEnd baseurl={baseurl} text={text} />, document.getElementById('root'))
     }
 
     return (

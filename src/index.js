@@ -7,4 +7,4 @@ import axios from 'axios'
 // start the Heroku backend
 axios.get('https://vast-backend.herokuapp.com/')
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<App start={false} />, document.getElementById('root'))

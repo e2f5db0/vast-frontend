@@ -8,6 +8,7 @@ Time invested in Vast (backend & frontend)
 | 04.10.2019 | 4        | Functionality to fetch audio files from the backend (API). Basic layout & feel for the frontend.        |
 | 05.10.2019 | 4        | Start the backend snappier by prefetching with axios. Modify the layout of the start page. Create a workflow for adding new Lines from the backend/API interface automatically to the frontend.                                       |
 | 06.10.2019 | 5        | Refactor the handling of all choice branches into one function. Start drafting the content for the left branch. |
+| 07.10.2019 | 7        | Complete the first version of the left branch, Add music and an easter egg to the front page.           |
 |            |          |                                                                                                         |
-| Total      | 22       |                                                                                                         |
+| Total      | 29       |                                                                                                         |
 |            |          |                                                                                                         |
