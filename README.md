@@ -1,7 +1,7 @@
 Vast
 ----------------------------------------------
 
-A text-based web game narrated by a slightly passive-aggressive nebula called Maia.
+A text-based web game narrated by a mystical entity. Choose carefully.
 
 ----------------------------------------------------------------------------------
 
