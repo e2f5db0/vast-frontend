@@ -29,7 +29,7 @@ const App = ({ start }) => {
           new Audio(baseurl + 'lines/start.wav').play()
           render_canvas()
         }} />}
-        <div className='mt-7'>
+        <div className='mt-7 Volume'>
           <h3 className='inline'>Sound:</h3>
           <Button className='inline' text={volume} handleClick={() => {
             setTimeout(() => {

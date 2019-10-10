@@ -9,7 +9,7 @@ import LeftEnd from './LeftEnd'
 
 const Canvas = ({ baseurl }) => {
 
-    const [line, setLine] = useState('That was rather unpleasant to watch. Do you believe they will fall in the end?')
+    const [line, setLine] = useState('That was rather unpleasant to watch. Do you believe that poor little creature will fall in the end?')
     const [choices, setChoices] = useState(['I hope so.', 'No.', 'Remain silent'])
     const [index, setIndex] = useState(1)
     const [path, setPath] = useState('')
