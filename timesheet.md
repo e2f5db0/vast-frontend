@@ -10,6 +10,8 @@ Time invested in Vast (backend & frontend)
 | 06.10.2019 | 5        | Refactor the handling of all choice branches into one function. Start drafting the content for the left branch. |
 | 07.10.2019 | 7        | Complete the first version of the left branch, Add music and an easter egg to the front page.           |
 | 08.10.2019 | 8        | Learn why one should not delete the local database uncontrollably. Debug, give up & rewrite the backend from scratch. |
+| 09.10.2019 | 8        | Enter all the Lines for the left branch into the database. Start writing Lines for the right branch.    |
+| 10.10.2019 | 4        | Start entering Lines for the right branch, Add a route for fetching the right branch from the backend.  |
 |            |          |                                                                                                         |
-| Total      | 37       |                                                                                                         |
+| Total      | 45       |                                                                                                         |
 |            |          |                                                                                                         |
