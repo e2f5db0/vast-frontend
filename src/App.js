@@ -24,8 +24,8 @@ const App = ({ start }) => {
   return (
     <div className='App'>
       <header className='App-header'>
-        <img src={vast_logo} alt='logo' />
-        <img src={vast} alt='vast' />
+        <img className='Logo' src={vast_logo} alt='logo' />
+        <img className='Logo' src={vast} alt='vast' />
         <p></p>
         <div className='mt-4'>
           {message}
@@ -55,7 +55,7 @@ const App = ({ start }) => {
           }} />
         </div>
       </header>
-      <Footer />
+      <Footer className='Footer' />
     </div>
   )
 }

@@ -12,7 +12,7 @@ Time invested in Vast (backend & frontend)
 | 08.10.2019 | 8        | Learn why one should not delete the local database uncontrollably. Debug, give up & rewrite the backend from scratch. |
 | 09.10.2019 | 8        | Enter all the Lines for the left branch into the database. Start writing Lines for the right branch.    |
 | 10.10.2019 | 4        | Start entering Lines for the right branch, Add a route for fetching the right branch from the backend.  |
-| 20.10.2019 | 7        | Design a logo (.gif) for the game with Adobe After Effects and Photoshop. Hide the choices for the duration of a Line. Minor UI modifications.|
+| 20.10.2019 | 10        | Design a logo (.gif) for the game with Adobe After Effects and Photoshop. Hide the choices for the duration of a Line. Minor UI modifications. Make everything adaptive to various screen sizes. |
 |            |          |                                                                                                         |
-| Total      | 52       |                                                                                                         |
+| Total      | 59       |                                                                                                         |
 |            |          |                                                                                                         |

@@ -1,16 +1,19 @@
 .App {
   text-align: center;
   background-color: #282D33;
-  min-height: 100vh;
+  min-height: 110vh;
+  max-height: 110vh;
+  min-width: 100vw;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
 }
 
 .App-header {
   background-color: #282D33;
   min-height: 100vh;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,18 +22,24 @@
   color: gainsboro;
 }
 
-.Header {
-  background-color: #282D33;
-  text-align: center;
-  display: flow-root;
+h2 {
   font-size: calc(10px + 2vmin);
+  margin-left: 8%;
+  margin-right: 8%;
+}
+
+.Header {
+  max-width: 100vw;
+  background-color: #282D33;
   color: gainsboro;
 }
 
 .Footer {
+  background-color: #282D33;
   margin-top: 3%;
-  bottom: 0;
-  width: 100%;
+  bottom: 0px;
+  min-width: 100vw;
+  max-width: 100wv;
 }
 
 .App-link {
@@ -40,13 +49,17 @@
 .Canvas {
   text-align: center;
   background-color: #282D33;
-  min-height: 60vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  max-width: 100vw;
   display: flow-root;
   font-size: calc(10px + 1vmin);
   flex-direction: column;
   justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
   color: gainsboro;
-  padding: 10%;
 }
 
 .mt-4 {
@@ -57,25 +70,30 @@
   margin-top: 7%;
 }
 
+.Logo {
+  max-width: 80vw;
+}
+
 .Volume {
+  max-width: 100vw;
   margin-left: 10%;
   margin-right: 10%;
 }
 
+.Choices {
+  align-content: center;
+}
+
 .Button {
   background-color: #282D33;
-  font-size: 150%;
+  font-size: calc(10px + 1vmin);
   color: gainsboro;
   margin-top: 3%;
   margin-right: 3%;
-  min-width: 150px;
+  min-width: 20vw;
+  max-width: 70vw;
   min-height: 50px;
-  padding: 1%;
-}
-
-.Choices {
-  display: inline;
-  padding-bottom: 30px;
+  padding: 3%;
 }
 
 .inline {

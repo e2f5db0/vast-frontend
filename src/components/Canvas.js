@@ -6,6 +6,7 @@ import Header from './Header'
 import Line from './Line'
 import Button from './Button'
 import LeftEnd from './LeftEnd'
+import Footer from './Footer'
 
 // renders a line, plays is out loud & renders the corresponding choices as buttons
 const Canvas = ({ baseurl, initial_delay }) => {
@@ -62,38 +63,40 @@ const Canvas = ({ baseurl, initial_delay }) => {
     }
 
     return (
-        <div>
-            <Header />
+        <div className='App'>
             <div className='Canvas'>
+                <Header className='Header' />
                 <div>
-                    <Line text={line} />
+                    <div>
+                        <Line text={line} />
+                    </div>
+                    {showChoices && <div className='Choices'>
+                        <Button text={choices[0]} handleClick={() => {
+                            if (path === '') {
+                                setPath('left')
+                                next_line('left')
+                                return
+                            }
+                            next_line(path)
+                        }} />
+                        <Button className='Button' text={choices[1]} handleClick={() => {
+                            if (path === '') {
+                                setPath('center')
+                                next_line('center')
+                                return
+                            }
+                            next_line(path)
+                        }} />
+                        <Button text={choices[2]} handleClick={() => {
+                            if (path === '') {
+                                setPath('right')
+                                next_line('right')
+                                return
+                            }
+                            next_line(path)
+                        }} />
+                    </div>}
                 </div>
-                {showChoices && <div className='Choices'>
-                    <Button text={choices[0]} handleClick={() => {
-                        if (path === '') {
-                            setPath('left')
-                            next_line('left')
-                            return
-                        }
-                        next_line(path)
-                    }} />
-                    <Button text={choices[1]} handleClick={() => {
-                        if (path === '') {
-                            setPath('center')
-                            next_line('center')
-                            return
-                        }
-                        next_line(path)
-                    }} />
-                    <Button text={choices[2]} handleClick={() => {
-                        if (path === '') {
-                            setPath('right')
-                            next_line('right')
-                            return
-                        }
-                        next_line(path)
-                    }} />
-                </div>}
             </div>
         </div>
     )
