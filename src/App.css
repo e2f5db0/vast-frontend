@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: #282c34;
+  background-color: #282D33;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -8,12 +8,8 @@
   justify-content: center;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
 .App-header {
-  background-color: #282c34;
+  background-color: #282D33;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,11 +20,17 @@
 }
 
 .Header {
-  background-color: #282c34;
+  background-color: #282D33;
   text-align: center;
   display: flow-root;
   font-size: calc(10px + 2vmin);
   color: gainsboro;
+}
+
+.Footer {
+  margin-top: 3%;
+  bottom: 0;
+  width: 100%;
 }
 
 .App-link {
@@ -37,8 +39,8 @@
 
 .Canvas {
   text-align: center;
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #282D33;
+  min-height: 60vh;
   display: flow-root;
   font-size: calc(10px + 1vmin);
   flex-direction: column;
@@ -61,7 +63,7 @@
 }
 
 .Button {
-  background-color: #282c34;
+  background-color: #282D33;
   font-size: 150%;
   color: gainsboro;
   margin-top: 3%;
@@ -73,6 +75,7 @@
 
 .Choices {
   display: inline;
+  padding-bottom: 30px;
 }
 
 .inline {

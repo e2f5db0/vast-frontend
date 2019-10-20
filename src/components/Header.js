@@ -1,9 +1,10 @@
 import React from 'react'
+import vast_logo from '../vast-logo.gif'
 
 const Header = () => {
     return (
         <div className='Header'>
-            <h1 className='mt-4'>Vast</h1>
+            <img src={vast_logo} alt='logo' />
         </div>
     )
 }

@@ -1,30 +1,35 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
+import vast_logo from './vast-logo.jpg'
 import vast from './vast.gif'
 import intro from './intro.wav'
 import './App.css'
 import Button from './components/Button'
 import Canvas from './components/Canvas'
+import Footer from './components/Footer'
 
 const App = ({ start }) => {
 
   const intro_song = new Audio(intro)
   const baseurl = 'https://vast-backend.herokuapp.com/'
-  const [volume, setVolume] = useState('off')
+  const [volume, setVolume] = useState('on')
   const [message, setMessage] = useState('')
   const [volumeClicks, setVolumeClicks] = useState(0)
   const [startButton, setStartButton] = useState(start)
 
   const render_canvas = () => {
-    ReactDOM.render(<Canvas baseurl={baseurl} />, document.getElementById('root'))
+    ReactDOM.render(<Canvas baseurl={baseurl} initial_delay={6} />, document.getElementById('root'))
   }
 
   return (
     <div className='App'>
       <header className='App-header'>
-        <h1>Vast</h1>
-        <img src={vast} className='App-logo' alt='logo' />
+        <img src={vast_logo} alt='logo' />
+        <img src={vast} alt='vast' />
         <p></p>
+        <div className='mt-4'>
+          {message}
+        </div>
         {startButton && <Button text='Start' handleClick={() => {
           new Audio(baseurl + 'lines/start.wav').play()
           render_canvas()
@@ -36,10 +41,10 @@ const App = ({ start }) => {
               setStartButton(true)
             }, 18000)
             setVolumeClicks(volumeClicks + 1)
-            if (volume === 'off') {
-              setVolume('on')
+            if (volume === 'on') {
+              setVolume('off')
               intro_song.play()
-              setMessage('Actually, it was always on and you can never turn it off.')
+              setMessage('Now you can never turn it off.')
             }
             if (volumeClicks >= 2 && volumeClicks < 15) {
               setMessage('No matter how many times you try.')
@@ -49,10 +54,8 @@ const App = ({ start }) => {
             }
           }} />
         </div>
-        <div className='mt-4'>
-          {message}
-        </div>
       </header>
+      <Footer />
     </div>
   )
 }
