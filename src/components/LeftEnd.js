@@ -2,23 +2,23 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from '../App'
 import Header from './Header'
-import Line from './Line'
+import Button from './Button'
+import achievement from '../Achievements/Pictures/rotten-religion.png'
+import audio from '../Achievements/Audio/amen.wav'
 
-const LeftEnd = ({ baseurl, text }) => {
+const LeftEnd = () => {
 
-    new Audio(baseurl + 'lines/left_path/36.wav').play()
-
-    setTimeout(() => {
-        ReactDOM.render(<App start={true} />, document.getElementById('root'))
-    }, 21000)
+    new Audio(audio).play()
 
     return (
         <div>
-            <Header />
-            <div className='Canvas'>
-                <div>
-                    <Line text={text} />
-                </div>
+            <div className='App'>
+                <Header className='Header' />
+                <img className='Achievement' src={achievement} alt='Achievement unlocked! - Rotten Religion' />
+                <p></p>
+                <Button className='Achievement-button' text='To Beginning' handleClick={() => {
+                    ReactDOM.render(<App start={true} />, document.getElementById('root'))
+                }} />
             </div>
         </div>
     )

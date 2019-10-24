@@ -6,7 +6,6 @@ import Header from './Header'
 import Line from './Line'
 import Button from './Button'
 import LeftEnd from './LeftEnd'
-import Footer from './Footer'
 
 // renders a line, plays is out loud & renders the corresponding choices as buttons
 const Canvas = ({ baseurl, initial_delay }) => {
@@ -44,7 +43,7 @@ const Canvas = ({ baseurl, initial_delay }) => {
         ]
         const text = l.data.text
 
-        if (path === 'left' && index === 36) {
+        if (path === 'left' && index === 34) {
             left_end(text)
         }
 
@@ -59,7 +58,9 @@ const Canvas = ({ baseurl, initial_delay }) => {
     }
 
     const left_end = (text) => {
-        ReactDOM.render(<LeftEnd baseurl={baseurl} text={text} />, document.getElementById('root'))
+        setTimeout(() => {
+            ReactDOM.render(<LeftEnd />, document.getElementById('root'))
+        }, 20000)
     }
 
     return (

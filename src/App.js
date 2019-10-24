@@ -39,7 +39,7 @@ const App = ({ start }) => {
           <Button className='inline' text={volume} handleClick={() => {
             setTimeout(() => {
               setStartButton(true)
-            }, 18000)
+            }, 10000)
             setVolumeClicks(volumeClicks + 1)
             if (volume === 'on') {
               setVolume('off')
