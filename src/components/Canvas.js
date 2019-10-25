@@ -71,8 +71,8 @@ const Canvas = ({ baseurl, initial_delay }) => {
                     <div>
                         <Line text={line} />
                     </div>
-                    {showChoices && <div className='Choices'>
-                        <Button text={choices[0]} handleClick={() => {
+                    {showChoices && <div>
+                        <Button type='Choice-button' text={choices[0]} handleClick={() => {
                             if (path === '') {
                                 setPath('left')
                                 next_line('left')
@@ -80,7 +80,7 @@ const Canvas = ({ baseurl, initial_delay }) => {
                             }
                             next_line(path)
                         }} />
-                        <Button className='Button' text={choices[1]} handleClick={() => {
+                        <Button type='Choice-button' text={choices[1]} handleClick={() => {
                             if (path === '') {
                                 setPath('center')
                                 next_line('center')
@@ -88,7 +88,7 @@ const Canvas = ({ baseurl, initial_delay }) => {
                             }
                             next_line(path)
                         }} />
-                        <Button text={choices[2]} handleClick={() => {
+                        <Button type='Choice-button' text={choices[2]} handleClick={() => {
                             if (path === '') {
                                 setPath('right')
                                 next_line('right')

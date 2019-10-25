@@ -6,7 +6,7 @@ import intro from './intro.wav'
 import './App.css'
 import Button from './components/Button'
 import Canvas from './components/Canvas'
-import Footer from './components/Footer'
+import Credits from './components/Credits'
 
 const App = ({ start }) => {
 
@@ -26,17 +26,17 @@ const App = ({ start }) => {
       <header className='App-header'>
         <img className='Logo' src={vast_logo} alt='logo' />
         <img className='Logo' src={vast} alt='vast' />
-        <p></p>
-        <div className='mt-4'>
-          {message}
-        </div>
-        {startButton && <Button text='Start' handleClick={() => {
+      </header>
+      <div className='Body'>
+        <p>{message}</p>
+        {startButton && <Button type='Main-button' text='Start' handleClick={() => {
           new Audio(baseurl + 'lines/start.wav').play()
           render_canvas()
         }} />}
-        <div className='mt-7 Volume'>
-          <h3 className='inline'>Sound:</h3>
-          <Button className='inline' text={volume} handleClick={() => {
+        <div className='Main-sound'>
+          Sound:
+          <br></br>
+          <Button type='Main-button' text={volume} handleClick={() => {
             setTimeout(() => {
               setStartButton(true)
             }, 10000)
@@ -54,8 +54,10 @@ const App = ({ start }) => {
             }
           }} />
         </div>
-      </header>
-      <Footer className='Footer' />
+        <button className='Credits-button' onClick={() => {
+          ReactDOM.render(<Credits />, document.getElementById('root'))
+        }} >Credits</button>
+      </div>
     </div>
   )
 }

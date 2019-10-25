@@ -15,6 +15,7 @@ Time invested in Vast (backend & frontend)
 | 20.10.2019 | 10       | Design a logo (.gif) for the game with Adobe After Effects and Photoshop. Hide the choices for the duration of a Line. Minor UI modifications. Make everything adaptive to various screen sizes. |
 | 22.10.2019 | 10       | Finalize the right choice branch (The Tale of Creation). Find & edit sound files for achievements, verses from The Bible (audiobook), clips from songs etc. |
 | 25.10.2019 | 3        | Learn about CSS-animations, Draft an achievement for the completion of the left path & implement it to code (left path finished). |
+| 26.10.2019 | 3        | Draft the layout for credits, Minor UI modifications, Make the CSS more logical.                        |
 |            |          |                                                                                                         |
-| Total      | 72       |                                                                                                         |
+| Total      | 75       |                                                                                                         |
 |            |          |                                                                                                         |
