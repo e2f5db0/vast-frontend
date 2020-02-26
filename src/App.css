@@ -51,7 +51,7 @@ h2 {
 }
 
 .Logo {
-  max-width: 80vw;
+  max-width: 70vw;
 }
 
 .Achievement {
@@ -61,7 +61,14 @@ h2 {
 }
 
 .Achievement-button {
-  margin-top: 90%;
+  font-size: calc(10px + 1vmin);
+  margin-top: 2%;
+  margin-right: 3%;
+  min-width: 15vw;
+  max-width: 15vw;
+  min-height: 50px;
+  padding: 1%;
+  color: gainsboro;
 }
 
 @keyframes drop {

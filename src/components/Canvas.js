@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import '../App.css'
 import axios from 'axios'
@@ -8,21 +8,28 @@ import Button from './Button'
 import LeftEnd from './LeftEnd'
 
 // renders a line, plays is out loud & renders the corresponding choices as buttons
-const Canvas = ({ baseurl, initial_delay }) => {
+const Canvas = ({ baseurl, initial_delay, i, p }) => {
 
     const [line, setLine] = useState('That was rather unpleasant to watch. Do you believe that poor little creature will fall in the end?')
     const [choices, setChoices] = useState(['I hope so.', 'No.', 'Remain silent'])
-    const [index, setIndex] = useState(1)
-    const [path, setPath] = useState('')
+    const [index, setIndex] = useState(i)
+    const [path, setPath] = useState(p)
     const [showChoices, setShowChoices] = useState(false)
 
-    useEffect(() => {
-        if (path === '') {
-            setTimeout(() => {
-                setShowChoices(true)
-            }, initial_delay * 1000)
-        }
-    }, [])
+    const left_end = () => {
+        setTimeout(() => {
+            ReactDOM.render(<LeftEnd />, document.getElementById('root'))
+        }, 20000)
+    }
+
+    if (path === '') {
+        setTimeout(() => {
+            setShowChoices(true)
+        }, initial_delay * 1000)
+    }
+    if (path === 'left' && index === 34) {
+        left_end()
+    }
 
     // show the choices after the audio has stopped playing
     const handleChoices = (time) => {
@@ -43,10 +50,6 @@ const Canvas = ({ baseurl, initial_delay }) => {
         ]
         const text = l.data.text
 
-        if (path === 'left' && index === 34) {
-            left_end(text)
-        }
-
         update_states(choices, text)
         new Audio(baseurl + 'lines/' + path + '_path' + String(index) + '.wav').play()
     }
@@ -57,16 +60,11 @@ const Canvas = ({ baseurl, initial_delay }) => {
         setIndex(index + 1)
     }
 
-    const left_end = (text) => {
-        setTimeout(() => {
-            ReactDOM.render(<LeftEnd />, document.getElementById('root'))
-        }, 20000)
-    }
 
     return (
         <div className='App'>
             <div className='Canvas'>
-                <Header className='Header' />
+                <Header className='Header' moving={false} />
                 <div>
                     <div>
                         <Line text={line} />

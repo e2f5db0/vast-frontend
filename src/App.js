@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
-import vast_logo from './vast-logo.jpg'
+import './App.css'
 import vast from './vast.gif'
 import intro from './intro.wav'
-import './App.css'
 import Button from './components/Button'
 import Canvas from './components/Canvas'
 import Credits from './components/Credits'
+import Header from './components/Header'
 
 const App = ({ start }) => {
 
@@ -18,15 +18,13 @@ const App = ({ start }) => {
   const [startButton, setStartButton] = useState(start)
 
   const render_canvas = () => {
-    ReactDOM.render(<Canvas baseurl={baseurl} initial_delay={6} />, document.getElementById('root'))
+    ReactDOM.render(<Canvas baseurl={baseurl} initial_delay={6} i={1} p='' />, document.getElementById('root'))
   }
 
   return (
     <div className='App'>
-      <header className='App-header'>
-        <img className='Logo' src={vast_logo} alt='logo' />
-        <img className='Logo' src={vast} alt='vast' />
-      </header>
+      <Header moving={true} />
+      <img className='Logo' src={vast} alt='vast' />
       <div className='Body'>
         <p>{message}</p>
         {startButton && <Button type='Main-button' text='Start' handleClick={() => {

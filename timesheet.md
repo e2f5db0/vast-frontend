@@ -16,6 +16,8 @@ Time invested in Vast (backend & frontend)
 | 22.10.2019 | 10       | Finalize the right choice branch (The Tale of Creation). Find & edit sound files for achievements, verses from The Bible (audiobook), clips from songs etc. |
 | 25.10.2019 | 3        | Learn about CSS-animations, Draft an achievement for the completion of the left path & implement it to code (left path finished). |
 | 26.10.2019 | 3        | Draft the layout for credits, Minor UI modifications, Make the CSS more logical.                        |
+| Break      |
+| 26.02.2020 | 6        | Review all code, Plan refactoring, Manually test all functionality, Recreate an expired IBM API Key. Push uncommitted changes. |
 |            |          |                                                                                                         |
-| Total      | 75       |                                                                                                         |
+| Total      | 81       |                                                                                                         |
 |            |          |                                                                                                         |

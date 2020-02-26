@@ -18,7 +18,7 @@ const Credits = () => {
 
     return (
         <div className='App'>
-            <Header className='Header' />
+            <Header className='Header' moving={false} />
             <div className='Body'>
                 <div className='Credits-left'>
                     <img className='Credits-gif' src={credits} alt='Dark creature sitting in a dark twitching room afraid.' />
