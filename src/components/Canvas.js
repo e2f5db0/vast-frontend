@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../App.css'
 import axios from 'axios'
 import Header from './Header'
 import Line from './Line'
 import Button from './Button'
+import lineService from '../services/lineService'
 
-const Canvas = ({ baseurl, initial_delay, i, setCanvas, setEnd }) => {
+const Canvas = ({ baseurl, initial_delay, i, setCanvas, sCount, setSCount, setEnd }) => {
 
     const [line, setLine] = useState('That was rather unpleasant to watch. Do you believe that poor little creature will fall in the end?')
     const [choices, setChoices] = useState(['I hope so.', 'No.', 'Remain silent'])
@@ -13,20 +14,41 @@ const Canvas = ({ baseurl, initial_delay, i, setCanvas, setEnd }) => {
     const [path, setPath] = useState('')
     const [showChoices, setShowChoices] = useState(false)
 
-    const rotten_religion = () => {
+    const [lCount, setLCount] = useState('')
+    const [cCount, setCCount] = useState('')
+    const [rCount, setRCount] = useState('')
+
+    const render_achievement = (ending, delay) => {
         setTimeout(() => {
-            setEnd('rotten_religion')
+            setEnd(ending)
             setCanvas(false)
-        }, 29000)
+        }, delay * 1000)
     }
+
+    useEffect(() => {
+        lineService.get_count_left()
+            .then((count) => setLCount(count))
+
+        lineService.get_count_center()
+            .then((count) => setCCount(count))
+
+        lineService.get_count_right()
+            .then((count) => setRCount(count))
+    }, [])
 
     if (path === '') {
         setTimeout(() => {
             setShowChoices(true)
         }, initial_delay * 1000)
     }
-    if (path === 'left' && index === 34) {
-        rotten_religion()
+    if (path === 'left' && index === lCount) {
+        render_achievement('rotten_religion', 29)
+    }
+    if (path === 'center' && index === cCount) {
+        render_achievement('meet_your_death', 10)
+    }
+    if (path === 'right' && index === rCount) {
+        render_achievement('tale_of_creation', 40)
     }
 
     // show the choices after the audio has stopped playing
@@ -83,6 +105,9 @@ const Canvas = ({ baseurl, initial_delay, i, setCanvas, setEnd }) => {
                             next_line(path)
                         }} />
                         <Button type='Choice-button' text={choices[2]} handleClick={() => {
+                            if (choices[2] === 'Remain silent') {
+                                setSCount(sCount + 1)
+                            }
                             if (path === '') {
                                 setPath('right')
                                 next_line('right')

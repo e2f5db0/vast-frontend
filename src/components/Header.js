@@ -2,7 +2,6 @@ import React from 'react'
 import logo from '../resources/vast-logo.gif'
 import logo_static from '../resources/vast-logo.jpg'
 
-
 const Header = ({ moving }) => {
 
     if (moving) {
