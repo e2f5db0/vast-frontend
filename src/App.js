@@ -20,7 +20,7 @@ const App = () => {
 
   if (canvas === true) {
     return (
-      <Canvas baseurl={baseurl} initial_delay={6} i={1} p='' setCanvas={setCanvas} setEnd={setEnd} />
+      <Canvas baseurl={baseurl} initial_delay={6} i={1} setCanvas={setCanvas} setEnd={setEnd} />
     )
   }
 

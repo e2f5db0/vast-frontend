@@ -5,12 +5,12 @@ import Header from './Header'
 import Line from './Line'
 import Button from './Button'
 
-const Canvas = ({ baseurl, initial_delay, i, p, setCanvas, setEnd }) => {
+const Canvas = ({ baseurl, initial_delay, i, setCanvas, setEnd }) => {
 
     const [line, setLine] = useState('That was rather unpleasant to watch. Do you believe that poor little creature will fall in the end?')
     const [choices, setChoices] = useState(['I hope so.', 'No.', 'Remain silent'])
     const [index, setIndex] = useState(i)
-    const [path, setPath] = useState(p)
+    const [path, setPath] = useState('')
     const [showChoices, setShowChoices] = useState(false)
 
     const rotten_religion = () => {
@@ -47,7 +47,6 @@ const Canvas = ({ baseurl, initial_delay, i, p, setCanvas, setEnd }) => {
             l.data.choice3
         ]
         const text = l.data.text
-
         update_states(choices, text)
         new Audio(baseurl + 'lines/' + path + '_path' + String(index) + '.wav').play()
     }
@@ -57,7 +56,6 @@ const Canvas = ({ baseurl, initial_delay, i, p, setCanvas, setEnd }) => {
         setChoices(choices)
         setIndex(index + 1)
     }
-
 
     return (
         <div className='App'>
