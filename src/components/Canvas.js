@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
-import ReactDOM from 'react-dom'
 import '../App.css'
 import axios from 'axios'
 import Header from './Header'
 import Line from './Line'
 import Button from './Button'
-import LeftEnd from './LeftEnd'
 
-// renders a line, plays is out loud & renders the corresponding choices as buttons
-const Canvas = ({ baseurl, initial_delay, i, p }) => {
+const Canvas = ({ baseurl, initial_delay, i, p, setCanvas, setEnd }) => {
 
     const [line, setLine] = useState('That was rather unpleasant to watch. Do you believe that poor little creature will fall in the end?')
     const [choices, setChoices] = useState(['I hope so.', 'No.', 'Remain silent'])
@@ -16,10 +13,11 @@ const Canvas = ({ baseurl, initial_delay, i, p }) => {
     const [path, setPath] = useState(p)
     const [showChoices, setShowChoices] = useState(false)
 
-    const left_end = () => {
+    const rotten_religion = () => {
         setTimeout(() => {
-            ReactDOM.render(<LeftEnd />, document.getElementById('root'))
-        }, 20000)
+            setEnd('rotten_religion')
+            setCanvas(false)
+        }, 29000)
     }
 
     if (path === '') {
@@ -28,7 +26,7 @@ const Canvas = ({ baseurl, initial_delay, i, p }) => {
         }, initial_delay * 1000)
     }
     if (path === 'left' && index === 34) {
-        left_end()
+        rotten_religion()
     }
 
     // show the choices after the audio has stopped playing
@@ -69,7 +67,7 @@ const Canvas = ({ baseurl, initial_delay, i, p }) => {
                     <div>
                         <Line text={line} />
                     </div>
-                    {showChoices && <div>
+                    {showChoices === true && <div>
                         <Button type='Choice-button' text={choices[0]} handleClick={() => {
                             if (path === '') {
                                 setPath('left')

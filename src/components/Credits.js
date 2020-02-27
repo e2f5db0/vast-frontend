@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import ReactDOM from 'react-dom'
-import App from '../App'
 import Header from './Header'
 import credits from '../credits.gif'
 import audio from '../credits.wav'
 
-const Credits = () => {
+const Credits = ({ setStartEnabled, setMainscreen, setCredits }) => {
 
     const [showBack, setShowBack] = useState(false)
 
@@ -30,7 +28,9 @@ const Credits = () => {
                 </div>
                 <br></br>
                 {showBack && <button className='Credits-button' onClick={() => {
-                    ReactDOM.render(<App start={true} />, document.getElementById('root'))
+                    setStartEnabled(true)
+                    setMainscreen(true)
+                    setCredits(false)
                 }} >Back</button>}
             </div>
         </div>
