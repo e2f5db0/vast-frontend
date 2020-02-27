@@ -20,5 +20,5 @@ Time invested in Vast (backend & frontend)
 | 26.02.2020 | 6        | Review all code, Plan refactoring, Manually test all functionality, Recreate an expired IBM API Key. Push uncommitted changes. |
 | 27.02.2020 | 8        | Refactor App.js & Canvas.js & backend views, Add functional logic for all achievements, Add API endpoints to backend | 
 |            |          |                                                                                                         |
-| Total      | 81       |                                                                                                         |
+| Total      | 89       |                                                                                                         |
 |            |          |                                                                                                         |
