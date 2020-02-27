@@ -1,8 +1,8 @@
 import React from 'react'
 import Header from './Header'
 import Button from './Button'
-import gif from '../achievements/rotten-religion.gif'
-import sound from '../achievements/rotten-religion.wav'
+import gif from '../resources/rotten-religion.gif'
+import sound from '../resources/rotten-religion.wav'
 
 const RottenReligion = ({ setStartEnabled, setEnd, setMainscreen, achievements, setAchievements }) => {
 

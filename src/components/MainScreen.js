@@ -1,9 +1,8 @@
-
 import React, { useState } from 'react'
 import Header from '../components/Header'
 import Button from '../components/Button'
-import vast from '../vast.gif'
-import intro from '../intro.wav'
+import vast from '../resources/vast.gif'
+import intro from '../resources/intro.wav'
 
 const MainScreen = ({ baseurl, startEnabled, setMainscreen, setCanvas, setCredits }) => {
 

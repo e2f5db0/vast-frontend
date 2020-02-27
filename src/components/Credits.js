@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Header from './Header'
-import credits from '../credits.gif'
-import audio from '../credits.wav'
+import credits from '../resources/credits.gif'
+import audio from '../resources/credits.wav'
 
 const Credits = ({ setStartEnabled, setMainscreen, setCredits }) => {
 

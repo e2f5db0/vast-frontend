@@ -1,6 +1,6 @@
 import React from 'react'
-import logo from '../vast-logo.gif'
-import logo_static from '../vast-logo.jpg'
+import logo from '../resources/vast-logo.gif'
+import logo_static from '../resources/vast-logo.jpg'
 
 
 const Header = ({ moving }) => {
