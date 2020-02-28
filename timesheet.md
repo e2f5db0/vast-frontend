@@ -18,7 +18,8 @@ Time invested in Vast (backend & frontend)
 | 26.10.2019 | 3        | Draft the layout for credits, Minor UI modifications, Make the CSS more logical.                        |
 | Break      |
 | 26.02.2020 | 6        | Review all code, Plan refactoring, Manually test all functionality, Recreate an expired IBM API Key. Push uncommitted changes. |
-| 27.02.2020 | 8        | Refactor App.js & Canvas.js & backend views, Add functional logic for all achievements, Add API endpoints to backend | 
+| 27.02.2020 | 8        | Refactor App.js & Canvas.js & backend views, Add functional logic for all achievements, Add API endpoints to backend |
+| 28.02.2020 | 6        | Design & animate all achievements in After Effects, Add a component for listing all achievements        |
 |            |          |                                                                                                         |
-| Total      | 89       |                                                                                                         |
+| Total      | 95       |                                                                                                         |
 |            |          |                                                                                                         |

@@ -117,7 +117,7 @@ h2 {
 }
 
 .Credits-button {
-  min-width: 5vw;
+  min-width: 7vw;
   min-height: 5vh;
   position: fixed;
   float: right;
@@ -126,4 +126,21 @@ h2 {
   margin-bottom: 2%;
   margin-right: 2%;
   color: gainsboro;
+}
+
+.Achievements-button {
+  min-width: 7vw;
+  min-height: 5vh;
+  position: fixed;
+  float: right;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 7%;
+  margin-right: 2%;
+  color: gainsboro;
+}
+
+.Back-button {
+  min-width: 5vw;
+  min-height: 4vh;
 }

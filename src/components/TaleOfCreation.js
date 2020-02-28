@@ -1,14 +1,13 @@
 import React from 'react'
 import Header from './Header'
 import Button from './Button'
-import gif from '../resources/rotten-religion.gif'
+import gif from '../resources/tale-of-creation.gif'
 import sound from '../resources/tale-of-creation.wav'
 import achievementService from '../services/achievementService'
 
 const TaleOfCreation = ({ setStartEnabled, setEnd, setMainscreen, achievements, setAchievements, sCount }) => {
 
     new Audio(sound).play()
-    setAchievements(achievements.concat('tale_of_creation'))
 
     return (
         <div>
@@ -17,9 +16,11 @@ const TaleOfCreation = ({ setStartEnabled, setEnd, setMainscreen, achievements, 
                 <img className='Achievement' src={gif} alt='Achievement unlocked - Tale of Creation' />
                 <br></br>
                 <Button type='Achievement-button' text='To Beginning' handleClick={() => {
-                    if (!achievements.includes('onlooker') && sCount >= 9) {
+                    if (!achievements.includes('Onlooker') && sCount >= 9) {
+                        setAchievements(achievements.concat('Tale of Creation'))
                         setEnd('onlooker')
                     } else {
+                        setAchievements(achievements.concat('Tale of Creation'))
                         achievementService.all_achievements(achievements, setAchievements, setEnd)
                         setStartEnabled(true)
                         setEnd('')

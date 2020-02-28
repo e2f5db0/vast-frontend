@@ -7,12 +7,15 @@ import RottenReligion from './components/RottenReligion'
 import Onlooker from './components/Onlooker'
 import TaleOfCreation from './components/TaleOfCreation'
 import MeetYourDeath from './components/MeetYourDeath'
+import Everything from './components/Everything'
+import AchievementList from './components/AchievementList'
 
 const App = () => {
 
   const [canvas, setCanvas] = useState(false)
   const [mainscreen, setMainscreen] = useState(true)
   const [credits, setCredits] = useState(false)
+  const [achievementList, setAchievementList] = useState(false)
 
   const [sCount, setSCount] = useState(0)
   const [achievements, setAchievements] = useState([])
@@ -31,7 +34,7 @@ const App = () => {
 
   if (mainscreen === true) {
     return (
-      <MainScreen baseurl={baseurl} startEnabled={startEnabled}
+      <MainScreen baseurl={baseurl} startEnabled={startEnabled} setAchievementList={setAchievementList}
         setMainscreen={setMainscreen} setCanvas={setCanvas} setCredits={setCredits} />
     )
   }
@@ -40,6 +43,13 @@ const App = () => {
     return (
       <Credits setStartEnabled={setStartEnabled} setCanvas={setCanvas}
         setMainscreen={setMainscreen} setCredits={setCredits} />
+    )
+  }
+
+  if (achievementList === true) {
+    return (
+      <AchievementList achievements={achievements} setAchievementList={setAchievementList}
+        setMainscreen={setMainscreen} setStartEnabled={setStartEnabled} />
     )
   }
 
@@ -74,7 +84,9 @@ const App = () => {
   }
 
   if (end === 'everything') {
-    // return everything
+    return (
+      <Everything achievements={achievements} setAchievements={setAchievements} />
+    )
   }
 }
 

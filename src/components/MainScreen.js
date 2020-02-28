@@ -4,7 +4,7 @@ import Button from '../components/Button'
 import vast from '../resources/vast.gif'
 import intro from '../resources/intro.wav'
 
-const MainScreen = ({ baseurl, startEnabled, setMainscreen, setCanvas, setCredits }) => {
+const MainScreen = ({ baseurl, startEnabled, setMainscreen, setCanvas, setCredits, setAchievementList }) => {
 
     const [volume, setVolume] = useState('on')
     const [message, setMessage] = useState('')
@@ -45,6 +45,10 @@ const MainScreen = ({ baseurl, startEnabled, setMainscreen, setCanvas, setCredit
                         }
                     }} />}
                 </div>
+                <button className='Achievements-button' onClick={() => {
+                    setAchievementList(true)
+                    setMainscreen(false)
+                }} >Achievements</button>
                 <button className='Credits-button' onClick={() => {
                     setCredits(true)
                     setMainscreen(false)
