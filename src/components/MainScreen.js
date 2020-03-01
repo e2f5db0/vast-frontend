@@ -45,14 +45,16 @@ const MainScreen = ({ baseurl, startEnabled, setMainscreen, setCanvas, setCredit
                         }
                     }} />}
                 </div>
-                <button className='Achievements-button' onClick={() => {
-                    setAchievementList(true)
-                    setMainscreen(false)
-                }} >Achievements</button>
-                <button className='Credits-button' onClick={() => {
-                    setCredits(true)
-                    setMainscreen(false)
-                }} >Credits</button>
+                <div className='Button-stack'>
+                    <button className='Achievements-button' onClick={() => {
+                        setAchievementList(true)
+                        setMainscreen(false)
+                    }} >Achievements</button>
+                    <button className='Credits-button' onClick={() => {
+                        setCredits(true)
+                        setMainscreen(false)
+                    }} >Credits</button>
+                </div>
             </div>
         </div>
     )
