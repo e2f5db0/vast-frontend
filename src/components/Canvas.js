@@ -41,14 +41,14 @@ const Canvas = ({ baseurl, initial_delay, i, setCanvas, sCount, setSCount, setEn
             setShowChoices(true)
         }, initial_delay * 1000)
     }
-    if (path === 'left' && index === lCount) {
-        render_achievement('rotten_religion', 29)
+    if (path === 'left' && index === lCount+1) {
+        render_achievement('rotten_religion', 22)
     }
-    if (path === 'center' && index === cCount) {
+    if (path === 'center' && index === cCount+1) {
         render_achievement('meet_your_death', 10)
     }
-    if (path === 'right' && index === rCount) {
-        render_achievement('tale_of_creation', 40)
+    if (path === 'right' && index === rCount+1) {
+        render_achievement('tale_of_creation', 18)
     }
 
     // show the choices after the audio has stopped playing
