@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../components/Header'
-import achievementService from '../services/achievementService'
+import trophy from '../resources/trophy.png'
+import Achievement from './Achievement'
 
 const AchievementList = ({ achievements, setAchievementList, setMainscreen, setStartEnabled }) => {
     if (achievements.length > 0) {
@@ -8,9 +9,15 @@ const AchievementList = ({ achievements, setAchievementList, setMainscreen, setS
             <div className='App'>
                 <Header moving={true} />
                 <div className='Body'>
-                    {
-                        achievements.map((achievement) => <p>{achievement} - {achievementService.getDescription(achievement)}</p>)
-                    }
+                    <div>
+                        <h2>Achievements</h2>
+                        <img className='Trophy' src={trophy} alt='Black trophy' />
+                    </div>
+                    <div className='AchievementList'>
+                        {
+                            achievements.map((achievement) => <Achievement key={achievement.name} achievement={achievement} />)
+                        }
+                    </div>
                     <button className='Back-button' onClick={() => {
                         setAchievementList(false)
                         setMainscreen(true)

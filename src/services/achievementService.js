@@ -14,7 +14,7 @@ const getDescription = (achievement) => {
         return 'The quieter you become, the more you are able to hear'
     }
     if (achievement === 'Rotten Religion') {
-        return 'Tread down the path of a nihilist'
+        return 'Tread down the path of nihilism'
     }
     if (achievement === 'Tale of Creation') {
         return 'Tread the path of endarkenment'

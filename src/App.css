@@ -142,4 +142,18 @@ h2 {
 .Back-button {
   min-width: 5vw;
   min-height: 4vh;
+  margin-top: 3%;
+}
+
+.Trophy {
+  max-height: 6vh;
+}
+
+.Achievement-entry {
+  margin-top: 3%;
+  font-size: calc(10px + 1vmin);
+}
+
+small {
+  font-style: italic;
 }
