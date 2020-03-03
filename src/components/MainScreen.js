@@ -3,8 +3,9 @@ import Header from '../components/Header'
 import Button from '../components/Button'
 import vast from '../resources/vast.gif'
 import intro from '../resources/intro.wav'
+import holy_sound from '../resources/holy_sound.wav'
 
-const MainScreen = ({ baseurl, startEnabled, setMainscreen, setCanvas, setCredits, setAchievementList }) => {
+const MainScreen = ({ baseurl, startEnabled, setMainscreen, setCanvas, setCredits, setAchievementList, achievements, setChapel }) => {
 
     const [volume, setVolume] = useState('on')
     const [message, setMessage] = useState('')
@@ -50,10 +51,15 @@ const MainScreen = ({ baseurl, startEnabled, setMainscreen, setCanvas, setCredit
                         setAchievementList(true)
                         setMainscreen(false)
                     }} >Achievements</button>
-                    <button className='Credits-button' onClick={() => {
+                    {achievements.length > 0 && <button className='Chapel-button' onClick={() => {
+                        setChapel(true)
+                        new Audio(holy_sound).play()
+                        setMainscreen(false)
+                    }} >Chapel</button>}
+                    {achievements.length > 0 && <button className='Credits-button' onClick={() => {
                         setCredits(true)
                         setMainscreen(false)
-                    }} >Credits</button>
+                    }} >Credits</button>}
                 </div>
             </div>
         </div>

@@ -9,12 +9,14 @@ import TaleOfCreation from './components/TaleOfCreation'
 import MeetYourDeath from './components/MeetYourDeath'
 import Everything from './components/Everything'
 import AchievementList from './components/AchievementList'
+import Chapel from './components/Chapel'
 
 const App = () => {
 
   const [canvas, setCanvas] = useState(false)
   const [mainscreen, setMainscreen] = useState(true)
   const [credits, setCredits] = useState(false)
+  const [chapel, setChapel] = useState(false)
   const [achievementList, setAchievementList] = useState(false)
 
   const [sCount, setSCount] = useState(0)
@@ -35,7 +37,14 @@ const App = () => {
   if (mainscreen === true) {
     return (
       <MainScreen baseurl={baseurl} startEnabled={startEnabled} setAchievementList={setAchievementList}
-        setMainscreen={setMainscreen} setCanvas={setCanvas} setCredits={setCredits} />
+        setMainscreen={setMainscreen} setCanvas={setCanvas} setCredits={setCredits} achievements={achievements}
+        setChapel={setChapel} />
+    )
+  }
+
+  if (chapel === true) {
+    return (
+      <Chapel baseurl={baseurl} setChapel={setChapel} setStartEnabled={setStartEnabled} setMainscreen={setMainscreen} />
     )
   }
 

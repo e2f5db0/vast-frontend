@@ -57,7 +57,7 @@ h2 {
 .Achievement {
   max-width: 70vw;
   max-height: 50vh;
-  animation: drop 1.5s ease forwards;
+  animation: appear 1.5s ease forwards;
 }
 
 .Achievement-button {
@@ -71,7 +71,7 @@ h2 {
   color: gainsboro;
 }
 
-@keyframes drop {
+@keyframes appear {
   0% { opacity: 0;}
   100% { opacity: 1;}
 }
@@ -139,6 +139,13 @@ h2 {
   color: gainsboro;
 }
 
+.Chapel-button {
+  min-width: 7vw;
+  min-height: 5vh;
+  margin-bottom: 7%;
+  color: gainsboro;
+}
+
 .Back-button {
   min-width: 5vw;
   min-height: 4vh;
@@ -152,6 +159,16 @@ h2 {
 .Achievement-entry {
   margin-top: 3%;
   font-size: calc(10px + 1vmin);
+}
+
+.God {
+  max-width: 70vw;
+  max-height: 50vh;
+}
+
+.God-speaking {
+  max-width: 70vw;
+  max-height: 50vh;
 }
 
 small {
