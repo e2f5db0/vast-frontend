@@ -45,7 +45,7 @@ const Canvas = ({ baseurl, initial_delay, i, setCanvas, sCount, setSCount, setEn
         render_achievement('rotten_religion', 22)
     }
     if (path === 'center' && index === cCount+1) {
-        render_achievement('meet_your_death', 10)
+        render_achievement('meet_your_death', 4)
     }
     if (path === 'right' && index === rCount+1) {
         render_achievement('tale_of_creation', 18)
