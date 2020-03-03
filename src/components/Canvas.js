@@ -6,7 +6,7 @@ import Line from './Line'
 import Button from './Button'
 import lineService from '../services/lineService'
 
-const Canvas = ({ baseurl, initial_delay, i, setCanvas, sCount, setSCount, setEnd }) => {
+const Canvas = ({ baseurl, initial_delay, i, setCanvas, sCount, setSCount, setEnd, achievements }) => {
 
     const [line, setLine] = useState('That was rather unpleasant to watch. Do you believe that poor little creature will fall in the end?')
     const [choices, setChoices] = useState(['I hope so.', 'No.', 'Remain silent'])
@@ -97,10 +97,13 @@ const Canvas = ({ baseurl, initial_delay, i, setCanvas, sCount, setSCount, setEn
                             next_line(path)
                         }} />
                         <Button type='Choice-button' text={choices[1]} handleClick={() => {
-                            if (path === '') {
+                            if (path === '' && achievements.length > 0) {
                                 setPath('center')
                                 next_line('center')
                                 return
+                            } else if (path === '' && achievements.length === 0) {
+                                setPath('right')
+                                next_line('right')
                             }
                             next_line(path)
                         }} />
