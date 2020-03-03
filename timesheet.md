@@ -21,7 +21,8 @@ Time invested in Vast (backend & frontend)
 | 27.02.2020 | 8        | Refactor App.js & Canvas.js & backend views. Add functional logic for all achievements. Add API endpoints to backend. |
 | 28.02.2020 | 6        | Design & animate all achievements in After Effects. Add a component for listing all achievements. |
 | 01.02.2020 | 6        | Add functionality to edit Lines (backend). Sync Line durations with the actual duration of the audio files. Fix the problem of achievements rendering too quickly. |
-| 02.92.2020 | 8        | Improve the layout of listing Achievements. Write content for the center branch & enter the Lines into the database. |
+| 02.02.2020 | 8        | Improve the layout of listing Achievements. Write content for the center branch & enter the Lines into the database. |
+| 03.02.2020 | 8        | Add functionality for adding & fetching individual audio files to the database (backend). Change the ending of the right branch. Add functionality for fetching random bible verse (audio) from the backend when in the "Chaple". Create the Chaple component. |
 |            |          |            |
-| Total      | 109      |            |
+| Total      | 117      |            |
 |            |          |            |
