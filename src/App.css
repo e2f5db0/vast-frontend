@@ -57,7 +57,7 @@ h2 {
 .Achievement {
   max-width: 70vw;
   max-height: 50vh;
-  animation: appear 1.5s ease forwards;
+  animation: fade 1.5s ease forwards;
 }
 
 .Achievement-button {
@@ -71,9 +71,9 @@ h2 {
   color: gainsboro;
 }
 
-@keyframes appear {
-  0% { opacity: 0;}
-  100% { opacity: 1;}
+@keyframes fade {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 .Main-sound {
@@ -150,6 +150,7 @@ h2 {
   min-width: 5vw;
   min-height: 4vh;
   margin-top: 3%;
+  color: gainsboro;
 }
 
 .Trophy {

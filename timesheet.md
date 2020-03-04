@@ -23,6 +23,7 @@ Time invested in Vast (backend & frontend)
 | 01.02.2020 | 6        | Add functionality to edit Lines (backend). Sync Line durations with the actual duration of the audio files. Fix the problem of achievements rendering too quickly. |
 | 02.02.2020 | 8        | Improve the layout of listing Achievements. Write content for the center branch & enter the Lines into the database. |
 | 03.02.2020 | 8        | Add functionality for adding & fetching individual audio files to the database (backend). Change the ending of the right branch. Add functionality for fetching random bible verse (audio) from the backend when in the "Chaple". Create the Chaple component. |
+| 04.03.2020 | 6        | Learn about cookies & store achievements using them. Refactor. Create a dialog for accepting cookie usage. Create initial warning/greeting dialogue. Improve the playing mechanics in the Chapel. |
 |            |          |            |
-| Total      | 117      |            |
+| Total      | 123      |            |
 |            |          |            |
