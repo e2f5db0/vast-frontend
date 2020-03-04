@@ -28,14 +28,19 @@ const App = () => {
   const [end, setEnd] = useState('')
 
   const [sCount, setSCount] = useState(0)
-  const [achievementCount, setAchievementCount] = useState(0)
   const achievements = Cookies
 
   const baseurl = 'https://vast-backend.herokuapp.com/'
 
   const completeAchievement = (achievement) => {
-    setAchievementCount(achievementCount + 1)
-    achievements.set(String(achievementCount), achievement)
+    const aCount = achievements.get('aCount')
+    if (aCount) {
+      achievements.set(String(aCount), achievement)
+      achievements.set('aCount', Number(aCount) + 1)
+    } else {
+      achievements.set('aCount', 0)
+      completeAchievement(achievement)
+    }
   }
 
   if (permissionDialogue === true) {
@@ -52,7 +57,7 @@ const App = () => {
 
   if (canvas === true) {
     return (
-      <Canvas baseurl={baseurl} initial_delay={6} i={1} setCanvas={setCanvas}
+      <Canvas baseurl={baseurl} initial_delay={6} i={24} setCanvas={setCanvas}
         sCount={sCount} setSCount={setSCount} setEnd={setEnd} achievements={achievements} />
     )
   }

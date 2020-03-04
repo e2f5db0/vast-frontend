@@ -16,7 +16,7 @@ const TaleOfCreation = ({ setStartEnabled, setEnd, setMainscreen, achievements, 
                 <img className='Achievement' src={gif} alt='Achievement unlocked - Tale of Creation' />
                 <br></br>
                 <Button type='Achievement-button' text='To Beginning' handleClick={() => {
-                    if (!achievements.includes('Onlooker') && sCount >= 9) {
+                    if (!achievementService.find(achievements, 'Onlooker') && sCount >= 9) {
                         completeAchievement('Tale of Creation')
                         setEnd('onlooker')
                     } else {

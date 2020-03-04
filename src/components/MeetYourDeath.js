@@ -16,7 +16,7 @@ const MeetYourDeath = ({ setStartEnabled, setEnd, setMainscreen, achievements, c
                 <img className='Achievement' src={gif} alt='Achievement unlocked - Meet Your Death' />
                 <br></br>
                 <Button type='Achievement-button' text='To Beginning' handleClick={() => {
-                    if (!achievements.includes('Onlooker') && sCount >= 9) {
+                    if (!achievementService.find(achievements, 'Onlooker') && sCount >= 9) {
                         completeAchievement('Meet Your Death')
                         setEnd('onlooker')
                     } else {

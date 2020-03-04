@@ -16,7 +16,7 @@ const RottenReligion = ({ setStartEnabled, setEnd, setMainscreen, achievements, 
                 <img className='Achievement' src={gif} alt='Achievement unlocked - Rotten Religion' />
                 <br></br>
                 <Button type='Achievement-button' text='To Beginning' handleClick={() => {
-                    if (!achievements.get('Onlooker') && sCount >= 9) {
+                    if (!achievementService.find(achievements, 'Onlooker') && sCount >= 9) {
                         completeAchievement('Rotten Religion')
                         setEnd('onlooker')
                     } else {
