@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from '../components/Header'
 import Button from '../components/Button'
 import god from '../resources/god.png'
@@ -11,15 +11,22 @@ const Chapel = ({ baseurl, setStartEnabled, setMainscreen, setChapel }) => {
 
     const [speaking, setSpeaking] = useState(true)
     const [id, setId] = useState(wisdomService.getRandomId())
-    const [showButtons, setShowButtons] = useState(false)
+    const [showPrey, setShowPrey] = useState(false)
+    const [showPray, setShowPray] = useState(false)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setShowPray(true)
+        }, 3000)
+    }, [])
 
     return (
         <div className='App'>
-            <div className='Canvas'>
+            <div className='Body'>
                 <Header className='Header' moving={false} />
                 <ReactAudioPlayer src={baseurl + 'prey-for-god/' + String(id)} autoPlay onEnded={() => {
                     setSpeaking(false)
-                    setShowButtons(true)
+                    setShowPrey(true)
                 }} />
                 <div>
                     <div>
@@ -27,18 +34,25 @@ const Chapel = ({ baseurl, setStartEnabled, setMainscreen, setChapel }) => {
                         {speaking === true && <img src={god_speaking} className='God-speaking' alt='God speaking' />}
                     </div>
                     {
-                        showButtons === true && 
+                        showPray === true &&
                         <div>
-                            <Button type='Choice-button' text='Prey for God' handleClick={() => {
-                                setId(wisdomService.getRandomId())
-                                setShowButtons(false)
-                                setSpeaking(true)
-                            }} />
-                            <Button type='Choice-button' text='Pray for The Devil' handleClick={() => {
+                            <p><b>You fool!</b></p>
+                            <p>Escape quickly!</p>
+                            <Button type='Main-button' text='Pray for The Devil' handleClick={() => {
                                 new Audio(devil).play()
                                 setChapel(false)
                                 setStartEnabled(true)
                                 setMainscreen(true)
+                            }} />
+                        </div>
+                    }
+                    {
+                        showPrey === true &&
+                        <div>
+                            <Button type='Main-button' text='Prey for God' handleClick={() => {
+                                setId(wisdomService.getRandomId())
+                                setShowPrey(false)
+                                setSpeaking(true)
                             }} />
                         </div>
                     }
