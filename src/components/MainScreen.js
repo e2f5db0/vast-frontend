@@ -4,6 +4,7 @@ import Button from '../components/Button'
 import vast from '../resources/vast.gif'
 import intro from '../resources/intro.wav'
 import holy_sound from '../resources/holy_sound.wav'
+import achievementService from '../services/achievementService'
 
 const MainScreen = ({ baseurl, startEnabled, setMainscreen, setCanvas, setCredits, setAchievementList, achievements, setChapel }) => {
 
@@ -51,12 +52,12 @@ const MainScreen = ({ baseurl, startEnabled, setMainscreen, setCanvas, setCredit
                         setAchievementList(true)
                         setMainscreen(false)
                     }} >Achievements</button>
-                    {achievements.length > 0 && <button className='Chapel-button' onClick={() => {
+                    {achievementService.hasAchievements(achievements) && <button className='Chapel-button' onClick={() => {
                         setChapel(true)
                         new Audio(holy_sound).play()
                         setMainscreen(false)
                     }} >Chapel</button>}
-                    {achievements.length > 0 && <button className='Credits-button' onClick={() => {
+                    {achievementService.hasAchievements(achievements) && <button className='Credits-button' onClick={() => {
                         setCredits(true)
                         setMainscreen(false)
                     }} >Credits</button>}

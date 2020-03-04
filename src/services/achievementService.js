@@ -37,4 +37,16 @@ const toList = (achievements) => {
     return aList
 }
 
-export default { all_achievements, getDescription, toList }
+const hasAchievements = (achievements) => {
+    let i = 0
+    while (i < 5) {
+        let achievement = achievements.get(String(i))
+        if (achievement) {
+            return true
+        }
+        i = i + 1
+    }
+    return false
+}
+
+export default { all_achievements, getDescription, toList, hasAchievements }
