@@ -4,7 +4,7 @@ import Button from './Button'
 import gif from '../resources/everything.gif'
 import sound from '../resources/everything.wav'
 
-const Everything = ({ achievements, setAchievements }) => {
+const Everything = ({ completeAchievement }) => {
 
     new Audio(sound).play()
 
@@ -15,7 +15,7 @@ const Everything = ({ achievements, setAchievements }) => {
                 <img className='Achievement' src={gif} alt='Achievement unlocked - Everything' />
                 <br></br>
                 <Button type='Achievement-button' text='To Beginning' handleClick={() => {
-                    setAchievements(achievements.concat('Everything'))
+                    completeAchievement('Everything')
                     // render completionist
                 }} />
             </div>

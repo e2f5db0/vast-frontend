@@ -174,3 +174,16 @@ h2 {
 small {
   font-style: italic;
 }
+
+.Warning-dialogue {
+  max-width: 60vw;
+  margin: 0 auto;
+}
+
+.Warning {
+  color: red;
+}
+
+.Blue-pill {
+  color: blue;
+}

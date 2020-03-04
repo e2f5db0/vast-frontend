@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Cookies from 'js-cookie'
 import './App.css'
 import Canvas from './components/Canvas'
 import Credits from './components/Credits'
@@ -10,26 +11,48 @@ import MeetYourDeath from './components/MeetYourDeath'
 import Everything from './components/Everything'
 import AchievementList from './components/AchievementList'
 import Chapel from './components/Chapel'
+import Warning from './components/Warning'
+import PermissionDialogue from './components/PermissionDialogue'
 
 const App = () => {
 
+  const [permissionDialogue, setPermissionDialogue] = useState(true)
+  const [warning, setWarnign] = useState(false)
   const [canvas, setCanvas] = useState(false)
-  const [mainscreen, setMainscreen] = useState(true)
+  const [mainscreen, setMainscreen] = useState(false)
   const [credits, setCredits] = useState(false)
   const [chapel, setChapel] = useState(false)
   const [achievementList, setAchievementList] = useState(false)
 
-  const [sCount, setSCount] = useState(0)
-  const [achievements, setAchievements] = useState([])
+  const [startEnabled, setStartEnabled] = useState(false)
   const [end, setEnd] = useState('')
 
-  const [startEnabled, setStartEnabled] = useState(false)
+  const [sCount, setSCount] = useState(0)
+  const [achievementCount, setAchievementCount] = useState(0)
+  const achievements = Cookies
 
   const baseurl = 'https://vast-backend.herokuapp.com/'
 
+  const completeAchievement = (achievement) => {
+    setAchievementCount(achievementCount + 1)
+    achievements.set(String(achievementCount), achievement)
+  }
+
+  if (permissionDialogue === true) {
+    return (
+      <PermissionDialogue setPermissionDialogue={setPermissionDialogue} setWarning={setWarnign} />
+    )
+  }
+
+  if (warning === true) {
+    return (
+      <Warning setWarning={setWarnign} setChapel={setChapel} setMainScreen={setMainscreen} />
+    )
+  }
+
   if (canvas === true) {
     return (
-      <Canvas baseurl={baseurl} initial_delay={6} i={1} setCanvas={setCanvas}
+      <Canvas baseurl={baseurl} initial_delay={6} i={32} setCanvas={setCanvas}
         sCount={sCount} setSCount={setSCount} setEnd={setEnd} achievements={achievements} />
     )
   }
@@ -67,34 +90,34 @@ const App = () => {
   if (end === 'meet_your_death') {
     return (
       <MeetYourDeath setStartEnabled={setStartEnabled} setEnd={setEnd} sCount={sCount}
-        setMainscreen={setMainscreen} achievements={achievements} setAchievements={setAchievements} />
+        setMainscreen={setMainscreen} achievements={achievements} completeAchievement={completeAchievement} />
     )
   }
 
   if (end === 'onlooker') {
     return (
       <Onlooker setStartEnabled={setStartEnabled} setEnd={setEnd}
-        setMainscreen={setMainscreen} achievements={achievements} setAchievements={setAchievements} />
+        setMainscreen={setMainscreen} achievements={achievements} completeAchievement={completeAchievement} />
     )
   }
 
   if (end === 'rotten_religion') {
     return (
       <RottenReligion setStartEnabled={setStartEnabled} setEnd={setEnd} sCount={sCount}
-        setMainscreen={setMainscreen} achievements={achievements} setAchievements={setAchievements} />
+        setMainscreen={setMainscreen} achievements={achievements} completeAchievement={completeAchievement} />
     )
   }
 
   if (end === 'tale_of_creation') {
     return (
       <TaleOfCreation setStartEnabled={setStartEnabled} setEnd={setEnd} sCount={sCount}
-        setMainscreen={setMainscreen} achievements={achievements} setAchievements={setAchievements} />
+        setMainscreen={setMainscreen} achievements={achievements} completeAchievement={completeAchievement} />
     )
   }
 
   if (end === 'everything') {
     return (
-      <Everything achievements={achievements} setAchievements={setAchievements} />
+      <Everything achievements={achievements} completeAchievement={completeAchievement} />
     )
   }
 }

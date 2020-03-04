@@ -1,7 +1,7 @@
 
-const all_achievements = (achievements, setAchievements, setEnd) => {
+const all_achievements = (achievements, completeAchievement, setEnd) => {
     if (achievements.length === 4) {
-        setAchievements(achievements.concat('everything'))
+        completeAchievement('everything')
         setEnd('everything')
     }
 }
@@ -22,6 +22,19 @@ const getDescription = (achievement) => {
     if (achievement === 'Everything') {
         return 'Completionist (100%)'
     }
-} 
+}
 
-export default { all_achievements, getDescription }
+const toList = (achievements) => {
+    let aList = []
+    let i = 0
+    while (i < 5) {
+        let achievement = achievements.get(String(i))
+        if (achievement) {
+            aList.push(achievement)
+        }
+        i = i + 1
+    }
+    return aList
+}
+
+export default { all_achievements, getDescription, toList }

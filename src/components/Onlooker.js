@@ -5,7 +5,7 @@ import gif from '../resources/onlooker.gif'
 import sound from '../resources/onlooker.wav'
 import achievementService from '../services/achievementService'
 
-const Onlooker = ({ setStartEnabled, setEnd, setMainscreen, achievements, setAchievements }) => {
+const Onlooker = ({ setStartEnabled, setEnd, setMainscreen, achievements, completeAchievement }) => {
 
     new Audio(sound).play()
 
@@ -16,8 +16,8 @@ const Onlooker = ({ setStartEnabled, setEnd, setMainscreen, achievements, setAch
                 <img className='Achievement' src={gif} alt='Achievement unlocked - Onlooker' />
                 <br></br>
                 <Button type='Achievement-button' text='To Beginning' handleClick={() => {
-                    setAchievements(achievements.concat('Onlooker'))
-                    achievementService.all_achievements(achievements, setAchievements, setEnd)
+                    completeAchievement('Onlooker')
+                    achievementService.all_achievements(achievementService.toList(achievements), completeAchievement, setEnd)
                     setStartEnabled(true)
                     setEnd('')
                     setMainscreen(true)

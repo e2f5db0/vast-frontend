@@ -4,13 +4,13 @@ import logo_static from '../resources/vast-logo.jpg'
 
 const Header = ({ moving }) => {
 
-    if (moving) {
+    if (moving === false) {
         return (
             <div>
                 <img className='Logo' src={logo_static} alt='logo' />
             </div>
         )
-    } else {
+    } else if (moving === true) {
         return (
             <div>
                 <img className='Logo' src={logo} alt='logo' />
