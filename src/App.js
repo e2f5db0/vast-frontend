@@ -52,7 +52,7 @@ const App = () => {
 
   if (canvas === true) {
     return (
-      <Canvas baseurl={baseurl} initial_delay={6} i={32} setCanvas={setCanvas}
+      <Canvas baseurl={baseurl} initial_delay={6} i={1} setCanvas={setCanvas}
         sCount={sCount} setSCount={setSCount} setEnd={setEnd} achievements={achievements} />
     )
   }
