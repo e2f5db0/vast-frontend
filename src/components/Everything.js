@@ -1,23 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from './Header'
 import Button from './Button'
+import ReactAudioPlayer from 'react-audio-player'
 import gif from '../resources/everything.gif'
 import sound from '../resources/everything.wav'
 
 const Everything = ({ completeAchievement }) => {
 
-    new Audio(sound).play()
+    const [showButton, setShowButton] = useState(false)
 
     return (
         <div>
             <div className='App'>
                 <Header className='Header' moving={false} />
+                <ReactAudioPlayer src={sound} autoPlay onEnded={() => {
+                    setShowButton(true)
+                }} />
                 <img className='Achievement' src={gif} alt='Achievement unlocked - Everything' />
                 <br></br>
-                <Button type='Achievement-button' text='To Beginning' handleClick={() => {
-                    completeAchievement('Everything')
-                    // render completionist
-                }} />
+                {
+                    showButton === true &&
+                    <Button type='Achievement-button' text='To Beginning' handleClick={() => {
+                        completeAchievement('Everything')
+                        // render completionist
+                    }} />
+                }
             </div>
         </div>
     )
