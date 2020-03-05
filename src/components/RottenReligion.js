@@ -27,11 +27,13 @@ const RottenReligion = ({ setStartEnabled, setEnd, setMainscreen, sCount, achiev
                             setEnd('onlooker')
                         } else {
                             completeAchievement('Rotten Religion')
-                            // check if all achievements are completed
-                            achievementService.allAchievements(achievements, completeAchievement, setEnd)
-                            setStartEnabled(true)
-                            setEnd('')
-                            setMainscreen(true)
+                            if (achievementService.allAchievements(achievements) === true) {
+                                setEnd('everything')
+                            } else {
+                                setStartEnabled(true)
+                                setEnd('')
+                                setMainscreen(true)
+                            }
                         }
                     }} />
                 }

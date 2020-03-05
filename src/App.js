@@ -13,6 +13,7 @@ import AchievementList from './components/AchievementList'
 import Chapel from './components/Chapel'
 import Warning from './components/Warning'
 import PermissionDialogue from './components/PermissionDialogue'
+import achievementService from './services/achievementService'
 
 const App = () => {
 
@@ -35,7 +36,7 @@ const App = () => {
   const baseurl = 'https://vast-backend.herokuapp.com/'
 
   const completeAchievement = (achievement) => {
-    if (cookiePermission === true) {
+    if (cookiePermission === true && achievementService.find(achievements, achievement) === false) {
       const aCount = achievements.get('aCount')
       if (aCount) {
         achievements.set(String(aCount), achievement)
@@ -132,7 +133,7 @@ const App = () => {
 
   if (end === 'everything') {
     return (
-      <Everything cookiePermission={cookiePermission} achievements={achievements} />
+      <Everything completeAchievement={completeAchievement} />
     )
   }
 }

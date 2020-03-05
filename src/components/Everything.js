@@ -22,7 +22,7 @@ const Everything = ({ completeAchievement }) => {
                     showButton === true &&
                     <Button type='Achievement-button' text='To Beginning' handleClick={() => {
                         completeAchievement('Everything')
-                        // render completionist
+                        // render Completionist
                     }} />
                 }
             </div>

@@ -1,10 +1,10 @@
 
-const allAchievements = (achievements, completeAchievement, setEnd) => {
+const allAchievements = (achievements) => {
     const achievementList = toList(achievements)
     if (achievementList.length === 4) {
-        completeAchievement('Everything')
-        setEnd('everything')
+        return true
     }
+    return false
 }
 
 const getDescription = (achievement) => {

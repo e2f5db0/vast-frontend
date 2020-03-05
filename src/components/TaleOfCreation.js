@@ -27,11 +27,13 @@ const TaleOfCreation = ({ setStartEnabled, setEnd, setMainscreen, sCount, cookie
                             setEnd('onlooker')
                         } else {
                             completeAchievement('Tale of Creation')
-                            // check if all achievements are completed
-                            achievementService.allAchievements(achievements, completeAchievement, setEnd)
-                            setStartEnabled(true)
-                            setEnd('')
-                            setMainscreen(true)
+                            if (achievementService.allAchievements(achievements) === true) {
+                                setEnd('everything')
+                            } else {
+                                setStartEnabled(true)
+                                setEnd('')
+                                setMainscreen(true)
+                            }
                         }
                     }} />
                 }

@@ -27,10 +27,13 @@ const MeetYourDeath = ({ setStartEnabled, setEnd, setMainscreen, sCount, achieve
                             setEnd('onlooker')
                         } else {
                             completeAchievement('Meet Your Death')
-                            achievementService.all_achievements(achievements, completeAchievement, setEnd)
-                            setStartEnabled(true)
-                            setEnd('')
-                            setMainscreen(true)
+                            if (achievementService.allAchievements(achievements) === true) {
+                                setEnd('everything')
+                            } else {
+                                setStartEnabled(true)
+                                setEnd('')
+                                setMainscreen(true)
+                            }
                         }
                     }} />
                 }
