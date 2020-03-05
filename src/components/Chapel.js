@@ -49,7 +49,7 @@ const Chapel = ({ baseurl, setStartEnabled, setMainscreen, setChapel }) => {
                     {
                         showPrey === true &&
                         <div>
-                            <Button type='Main-button' text='Prey for God' handleClick={() => {
+                            <Button type='Main-button' text='Pray to God' handleClick={() => {
                                 setId(wisdomService.getRandomId())
                                 setShowPrey(false)
                                 setSpeaking(true)

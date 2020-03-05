@@ -7,16 +7,18 @@ const Warning = ({ setWarning, setChapel, setMainScreen }) => {
         <div className='App'>
             <div className='Body'>
                 <Header moving={true} />
-                <div className='Warning-dialogue'>
+                <div className='Dialogue'>
                     <h2 className='Warning'><b>Warning!</b></h2>
                     <p>This game expresses strong views towards religion.</p>
-                    <p>Side effects may include permanent loss of religion and belief in central authority.</p>
-                    <p>Choose carefully.</p>
-                    <Button type='Choice-button Blue-pill' text='Blue pill' handleClick={() => {
+                    <p>Side effects may include permanent disbelief in central
+                        authority and losing your religion.</p>
+                    <p>The question is</p>
+                    <p>Do you want the <b>truth</b>?</p>
+                    <Button type='Choice-button' text='No.' handleClick={() => {
                         setWarning(false)
                         setChapel(true)
                     }} />
-                    <Button type='Choice-button Warning' text='Red pill' handleClick={() => {
+                    <Button type='Choice-button' text='Yes.' handleClick={() => {
                         setWarning(false)
                         setMainScreen(true)
                     }} />
