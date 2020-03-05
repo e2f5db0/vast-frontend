@@ -10,7 +10,7 @@ const Warning = ({ setWarning, setChapel, setMainScreen }) => {
                 <div className='Dialogue'>
                     <h2 className='Warning'><b>Warning!</b></h2>
                     <p>This game expresses strong views towards religion.</p>
-                    <p>Side effects may include permanent disbelief in central
+                    <p>Side effects may include permanent disbelief in centralized
                         authority and losing your religion.</p>
                     <p>The question is</p>
                     <p>Do you want the <b>truth</b>?</p>
