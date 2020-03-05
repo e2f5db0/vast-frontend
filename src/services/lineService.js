@@ -17,4 +17,17 @@ const get_count_right = () => {
     return request.then((res) => res.data.lines)
 }
 
-export default { get_count_left, get_count_center, get_count_right }
+const end = (path, index, lCount, cCount, rCount) => {
+    if (path === 'left' && index === lCount+1) {
+        return true
+    }
+    if (path === 'center' && index === cCount+1) {
+        return true
+    }
+    if (path === 'right' && index === rCount+1) {
+        return true
+    }
+    return false
+}
+
+export default { get_count_left, get_count_center, get_count_right, end }

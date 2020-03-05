@@ -81,7 +81,9 @@ const Canvas = ({ baseurl, initial_delay, i, setCanvas, sCount, setSCount, setEn
                 {
                     path !== '' &&
                     <ReactAudioPlayer src={baseurl + 'lines/' + path + '_path' + String(index-1) + '.wav'} autoPlay onEnded={() => {
-                        setShowChoices(true)
+                        if (lineService.end(path, index, lCount, cCount, rCount) === false) {
+                            setShowChoices(true)
+                        }
                     }} />
                 }
                 <div>
