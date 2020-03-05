@@ -4,7 +4,7 @@ import trophy from '../resources/trophy.png'
 import Achievement from './Achievement'
 import achievementService from '../services/achievementService'
 
-const AchievementList = ({ achievements, setAchievementList, setMainscreen, setStartEnabled }) => {
+const AchievementList = ({ setAchievementList, setMainscreen, setStartEnabled, achievements }) => {
     const achievementList = achievementService.toList(achievements)
     if (achievementList.length > 0) {
         return (

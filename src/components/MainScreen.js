@@ -5,7 +5,7 @@ import vast from '../resources/vast.gif'
 import intro from '../resources/intro.wav'
 import achievementService from '../services/achievementService'
 
-const MainScreen = ({ baseurl, startEnabled, setMainscreen, setCanvas, setCredits, setAchievementList, achievements, setChapel }) => {
+const MainScreen = ({ baseurl, startEnabled, setMainscreen, setCanvas, setCredits, setAchievementList, setChapel, achievements }) => {
 
     const [volume, setVolume] = useState('on')
     const [message, setMessage] = useState('')

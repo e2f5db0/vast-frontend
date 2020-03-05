@@ -30,4 +30,18 @@ const end = (path, index, lCount, cCount, rCount) => {
     return false
 }
 
-export default { get_count_left, get_count_center, get_count_right, end }
+const nextLine = async (path, index, setShowChoices, setLine, setChoices, setIndex) => {
+    const l = await axios.get(baseurl + path + '-path/' + String(index))
+    setShowChoices(false)
+    const choices = [
+        l.data.choice1,
+        l.data.choice2,
+        l.data.choice3
+    ]
+    const text = l.data.text
+    setLine(text)
+    setChoices(choices)
+    setIndex(index + 1)
+}
+
+export default { get_count_left, get_count_center, get_count_right, end, nextLine }

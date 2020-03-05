@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Cookies from 'js-cookie'
 import './App.css'
+import Cookies from 'js-cookie'
 import Canvas from './components/Canvas'
 import Credits from './components/Credits'
 import MainScreen from './components/MainScreen'
@@ -16,6 +16,8 @@ import PermissionDialogue from './components/PermissionDialogue'
 
 const App = () => {
 
+  const achievements = Cookies
+
   const [cookiePermission, setCookiePermission] = useState(false)
   const [permissionDialogue, setPermissionDialogue] = useState(true)
   const [warning, setWarnign] = useState(false)
@@ -29,7 +31,6 @@ const App = () => {
   const [end, setEnd] = useState('')
 
   const [sCount, setSCount] = useState(0)
-  const achievements = Cookies
 
   const baseurl = 'https://vast-backend.herokuapp.com/'
 
@@ -61,7 +62,7 @@ const App = () => {
 
   if (canvas === true) {
     return (
-      <Canvas baseurl={baseurl} initial_delay={7} i={1} setCanvas={setCanvas}
+      <Canvas baseurl={baseurl} initial_delay={7} i={24} setCanvas={setCanvas}
         sCount={sCount} setSCount={setSCount} setEnd={setEnd} achievements={achievements} />
     )
   }
@@ -69,14 +70,15 @@ const App = () => {
   if (mainscreen === true) {
     return (
       <MainScreen baseurl={baseurl} startEnabled={startEnabled} setAchievementList={setAchievementList}
-        setMainscreen={setMainscreen} setCanvas={setCanvas} setCredits={setCredits} achievements={achievements}
-        setChapel={setChapel} />
+        achievements={achievements} setMainscreen={setMainscreen} setCanvas={setCanvas}
+        setCredits={setCredits} setChapel={setChapel} />
     )
   }
 
   if (chapel === true) {
     return (
-      <Chapel baseurl={baseurl} setChapel={setChapel} setStartEnabled={setStartEnabled} setMainscreen={setMainscreen} />
+      <Chapel baseurl={baseurl} setChapel={setChapel} setStartEnabled={setStartEnabled}
+        setMainscreen={setMainscreen} />
     )
   }
 
@@ -89,7 +91,7 @@ const App = () => {
 
   if (achievementList === true) {
     return (
-      <AchievementList achievements={achievements} setAchievementList={setAchievementList}
+      <AchievementList setAchievementList={setAchievementList} achievements={achievements}
         setMainscreen={setMainscreen} setStartEnabled={setStartEnabled} />
     )
   }
@@ -99,34 +101,38 @@ const App = () => {
   if (end === 'meet_your_death') {
     return (
       <MeetYourDeath setStartEnabled={setStartEnabled} setEnd={setEnd} sCount={sCount}
-        setMainscreen={setMainscreen} achievements={achievements} completeAchievement={completeAchievement} />
+        completeAchievement={completeAchievement} setMainscreen={setMainscreen}
+        cookiePermission={cookiePermission} achievements={achievements} />
     )
   }
 
   if (end === 'onlooker') {
     return (
-      <Onlooker setStartEnabled={setStartEnabled} setEnd={setEnd}
-        setMainscreen={setMainscreen} achievements={achievements} completeAchievement={completeAchievement} />
+      <Onlooker setStartEnabled={setStartEnabled} setEnd={setEnd} setMainscreen={setMainscreen}
+        cookiePermission={cookiePermission} achievements={achievements}
+        completeAchievement={completeAchievement} />
     )
   }
 
   if (end === 'rotten_religion') {
     return (
       <RottenReligion setStartEnabled={setStartEnabled} setEnd={setEnd} sCount={sCount}
-        setMainscreen={setMainscreen} achievements={achievements} completeAchievement={completeAchievement} />
+        completeAchievement={completeAchievement} setMainscreen={setMainscreen}
+        cookiePermission={cookiePermission} achievements={achievements} />
     )
   }
 
   if (end === 'tale_of_creation') {
     return (
       <TaleOfCreation setStartEnabled={setStartEnabled} setEnd={setEnd} sCount={sCount}
-        setMainscreen={setMainscreen} achievements={achievements} completeAchievement={completeAchievement} />
+        completeAchievement={completeAchievement} setMainscreen={setMainscreen}
+        cookiePermission={cookiePermission} achievements={achievements} />
     )
   }
 
   if (end === 'everything') {
     return (
-      <Everything achievements={achievements} completeAchievement={completeAchievement} />
+      <Everything cookiePermission={cookiePermission} achievements={achievements} />
     )
   }
 }

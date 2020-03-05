@@ -6,7 +6,7 @@ import gif from '../resources/meet-your-death.gif'
 import sound from '../resources/meet-your-death.wav'
 import achievementService from '../services/achievementService'
 
-const MeetYourDeath = ({ setStartEnabled, setEnd, setMainscreen, achievements, completeAchievement, sCount }) => {
+const MeetYourDeath = ({ setStartEnabled, setEnd, setMainscreen, sCount, achievements, completeAchievement }) => {
 
     const [showButton, setShowButton] = useState(false)
 
@@ -27,7 +27,7 @@ const MeetYourDeath = ({ setStartEnabled, setEnd, setMainscreen, achievements, c
                             setEnd('onlooker')
                         } else {
                             completeAchievement('Meet Your Death')
-                            achievementService.all_achievements(achievementService.toList(achievements), completeAchievement, setEnd)
+                            achievementService.all_achievements(achievements, completeAchievement, setEnd)
                             setStartEnabled(true)
                             setEnd('')
                             setMainscreen(true)

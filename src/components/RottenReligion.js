@@ -6,7 +6,7 @@ import gif from '../resources/rotten-religion.gif'
 import sound from '../resources/rotten-religion.wav'
 import achievementService from '../services/achievementService'
 
-const RottenReligion = ({ setStartEnabled, setEnd, setMainscreen, achievements, completeAchievement, sCount }) => {
+const RottenReligion = ({ setStartEnabled, setEnd, setMainscreen, sCount, achievements, completeAchievement }) => {
 
     const [showButton, setShowButton] = useState(false)
 
@@ -27,7 +27,8 @@ const RottenReligion = ({ setStartEnabled, setEnd, setMainscreen, achievements, 
                             setEnd('onlooker')
                         } else {
                             completeAchievement('Rotten Religion')
-                            achievementService.all_achievements(achievementService.toList(achievements), completeAchievement, setEnd)
+                            // check if all achievements are completed
+                            achievementService.allAchievements(achievements, completeAchievement, setEnd)
                             setStartEnabled(true)
                             setEnd('')
                             setMainscreen(true)

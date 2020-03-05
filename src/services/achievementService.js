@@ -1,7 +1,8 @@
 
-const all_achievements = (achievements, completeAchievement, setEnd) => {
-    if (achievements.length === 4) {
-        completeAchievement('everything')
+const allAchievements = (achievements, completeAchievement, setEnd) => {
+    const achievementList = toList(achievements)
+    if (achievementList.length === 4) {
+        completeAchievement('Everything')
         setEnd('everything')
     }
 }
@@ -49,6 +50,18 @@ const hasAchievements = (achievements) => {
     return false
 }
 
+const hasAchievement = (achievements, achievement) => {
+    let i = 0
+    while (i < 5) {
+        let a = achievements.get(String(i))
+        if (a === achievement) {
+            return true
+        }
+        i = i + 1
+    }
+    return false
+}
+
 const find = (achievements, string) => {
     let i = 0
     while (i < 5) {
@@ -61,4 +74,7 @@ const find = (achievements, string) => {
     return false
 }
 
-export default { all_achievements, getDescription, toList, hasAchievements, find }
+export default {
+    allAchievements, getDescription, toList, hasAchievements,
+    hasAchievement, find
+}

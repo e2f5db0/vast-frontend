@@ -23,7 +23,8 @@ const Onlooker = ({ setStartEnabled, setEnd, setMainscreen, achievements, comple
                     showButton === true &&
                     <Button type='Achievement-button' text='To Beginning' handleClick={() => {
                         completeAchievement('Onlooker')
-                        achievementService.all_achievements(achievementService.toList(achievements), completeAchievement, setEnd)
+                        // check if all achievements are completed
+                        achievementService.allAchievements(achievements, completeAchievement, setEnd)
                         setStartEnabled(true)
                         setEnd('')
                         setMainscreen(true)

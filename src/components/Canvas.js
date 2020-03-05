@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import '../App.css'
-import axios from 'axios'
 import Header from './Header'
 import Line from './Line'
 import Button from './Button'
 import ReactAudioPlayer from 'react-audio-player'
 import lineService from '../services/lineService'
+import achievementService from '../services/achievementService'
 
 const Canvas = ({ baseurl, initial_delay, i, setCanvas, sCount, setSCount, setEnd, achievements }) => {
 
@@ -30,7 +30,16 @@ const Canvas = ({ baseurl, initial_delay, i, setCanvas, sCount, setSCount, setEn
             .then((count) => setRCount(count))
     }, [])
 
-    // handle the first Line
+    const nextLine = (path) => {
+        lineService.nextLine(path, index, setShowChoices, setLine, setChoices, setIndex)
+    }
+
+    const handleFirstChoice = (path) => {
+        setPath(path)
+        nextLine(path)
+    }
+
+    // show choices after first Line
     if (path === '') {
         setTimeout(() => {
             setShowChoices(true)
@@ -38,40 +47,22 @@ const Canvas = ({ baseurl, initial_delay, i, setCanvas, sCount, setSCount, setEn
     }
 
     // handle the endings
-    const render_achievement = (ending, delay) => {
+    const renderAchievement = (ending, delay) => {
         setTimeout(() => {
             setEnd(ending)
             setCanvas(false)
         }, delay * 1000)
     }
-    if (path === 'left' && index === lCount + 1) {
-        render_achievement('rotten_religion', 22)
-    }
-    if (path === 'center' && index === cCount + 1) {
-        render_achievement('meet_your_death', 4)
-    }
-    if (path === 'right' && index === rCount + 1) {
-        render_achievement('tale_of_creation', 18)
-    }
-
-    // fetches the next line from the database when a choice is made
-    const next_line = async (path) => {
-        const l = await axios.get(baseurl + path + '-path/' + String(index))
-        setShowChoices(false)
-        const choices = [
-            l.data.choice1,
-            l.data.choice2,
-            l.data.choice3
-        ]
-        const text = l.data.text
-        setLine(text)
-        setChoices(choices)
-        setIndex(index + 1)
-    }
-
-    const handleFirstChoice = (path) => {
-        setPath(path)
-        next_line(path)
+    if (lineService.end(path, index, lCount, cCount, rCount) === true) {
+        if (path === 'left') {
+            renderAchievement('rotten_religion', 22)
+        }
+        if (path === 'center') {
+            renderAchievement('meet_your_death', 4)
+        }
+        if (path === 'right') {
+            renderAchievement('tale_of_creation', 18)
+        }
     }
 
     return (
@@ -80,7 +71,7 @@ const Canvas = ({ baseurl, initial_delay, i, setCanvas, sCount, setSCount, setEn
                 <Header className='Header' moving={false} />
                 {
                     path !== '' &&
-                    <ReactAudioPlayer src={baseurl + 'lines/' + path + '_path' + String(index-1) + '.wav'} autoPlay onEnded={() => {
+                    <ReactAudioPlayer src={baseurl + 'lines/' + path + '_path' + String(index - 1) + '.wav'} autoPlay onEnded={() => {
                         if (lineService.end(path, index, lCount, cCount, rCount) === false) {
                             setShowChoices(true)
                         }
@@ -90,34 +81,41 @@ const Canvas = ({ baseurl, initial_delay, i, setCanvas, sCount, setSCount, setEn
                     <div>
                         <Line text={line} />
                     </div>
-                    {showChoices === true && <div>
-                        <Button type='Choice-button' text={choices[0]} handleClick={() => {
-                            if (path === '') {
-                                handleFirstChoice('left')
-                                return
-                            }
-                            next_line(path)
-                        }} />
-                        <Button type='Choice-button' text={choices[1]} handleClick={() => {
-                            if (path === '' && achievements.length > 0) {
-                                handleFirstChoice('center')
-                                return
-                            } else if (path === '' && achievements.length === 0) { // choosing the center path first is disallowed
-                                handleFirstChoice('right')
-                            }
-                            next_line(path)
-                        }} />
-                        <Button type='Choice-button' text={choices[2]} handleClick={() => {
-                            if (choices[2] === 'Remain silent') {
-                                setSCount(sCount + 1)
-                            }
-                            if (path === '') {
-                                handleFirstChoice('right')
-                                return
-                            }
-                            next_line(path)
-                        }} />
-                    </div>}
+                    {
+                        showChoices === true &&
+                        <div>
+                            <Button type='Choice-button' text={choices[0]} handleClick={() => {
+                                if (path === '') {
+                                    handleFirstChoice('left')
+                                    return
+                                }
+                                nextLine(path)
+                            }} />
+                            <Button type='Choice-button' text={choices[1]} handleClick={() => {
+                                if (path === '' && achievementService.hasAchievements(achievements) === true) {
+                                    handleFirstChoice('center')
+                                    return
+                                // choosing the center path first is disallowed
+                                } else if (path === '' && achievementService.hasAchievements(achievements) === false) { 
+                                    handleFirstChoice('right')
+                                }
+                                nextLine(path)
+                            }} />
+                            <Button type='Choice-button' text={choices[2]} handleClick={() => {
+                                if (choices[2] === 'Remain silent') {
+                                    setSCount(sCount + 1)
+                                }
+                                if (path === '' && achievementService.hasAchievement(achievements, 'Tale of Creation')) {
+                                    handleFirstChoice('center')
+                                    return
+                                } else if (path === '') {
+                                    handleFirstChoice('right')
+                                    return
+                                }
+                                nextLine(path)
+                            }} />
+                        </div>
+                    }
                 </div>
             </div>
         </div>
