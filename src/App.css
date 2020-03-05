@@ -176,15 +176,11 @@ small {
   font-style: italic;
 }
 
-.Warning-dialogue {
+.Dialogue {
   max-width: 60vw;
   margin: 0 auto;
 }
 
 .Warning {
   color: red;
-}
-
-.Blue-pill {
-  color: blue;
 }

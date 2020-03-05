@@ -16,6 +16,7 @@ import PermissionDialogue from './components/PermissionDialogue'
 
 const App = () => {
 
+  const [cookiePermission, setCookiePermission] = useState(false)
   const [permissionDialogue, setPermissionDialogue] = useState(true)
   const [warning, setWarnign] = useState(false)
   const [canvas, setCanvas] = useState(false)
@@ -33,19 +34,22 @@ const App = () => {
   const baseurl = 'https://vast-backend.herokuapp.com/'
 
   const completeAchievement = (achievement) => {
-    const aCount = achievements.get('aCount')
-    if (aCount) {
-      achievements.set(String(aCount), achievement)
-      achievements.set('aCount', Number(aCount) + 1)
-    } else {
-      achievements.set('aCount', 0)
-      completeAchievement(achievement)
+    if (cookiePermission === true) {
+      const aCount = achievements.get('aCount')
+      if (aCount) {
+        achievements.set(String(aCount), achievement)
+        achievements.set('aCount', Number(aCount) + 1)
+      } else {
+        achievements.set('aCount', 0)
+        completeAchievement(achievement)
+      }
     }
   }
 
   if (permissionDialogue === true) {
     return (
-      <PermissionDialogue setPermissionDialogue={setPermissionDialogue} setWarning={setWarnign} />
+      <PermissionDialogue setPermissionDialogue={setPermissionDialogue} setWarning={setWarnign}
+        setCookiePermission={setCookiePermission} />
     )
   }
 
@@ -57,7 +61,7 @@ const App = () => {
 
   if (canvas === true) {
     return (
-      <Canvas baseurl={baseurl} initial_delay={6} i={24} setCanvas={setCanvas}
+      <Canvas baseurl={baseurl} initial_delay={6} i={1} setCanvas={setCanvas}
         sCount={sCount} setSCount={setSCount} setEnd={setEnd} achievements={achievements} />
     )
   }
