@@ -21,7 +21,6 @@ const MainScreen = ({ baseurl, startEnabled, setMainscreen, setCanvas, setCredit
             <div className='Body'>
                 <p>{message}</p>
                 {startButton && <Button type='Main-button' text='Start' handleClick={() => {
-                    new Audio(baseurl + 'lines/start.wav').play()
                     setCanvas(true)
                     setMainscreen(false)
                 }} />}

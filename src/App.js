@@ -49,8 +49,8 @@ const App = () => {
 
   if (canvas === true) {
     return (
-      <Canvas baseurl={baseurl} initial_delay={7} i={34} setCanvas={setCanvas}
-        sCount={sCount} setSCount={setSCount} setEnd={setEnd} achievements={achievements} />
+      <Canvas baseurl={baseurl} i={1} setCanvas={setCanvas} sCount={sCount} setSCount={setSCount}
+        setEnd={setEnd} achievements={achievements} />
     )
   }
 

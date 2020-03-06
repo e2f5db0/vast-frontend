@@ -7,7 +7,7 @@ import ReactAudioPlayer from 'react-audio-player'
 import lineService from '../services/lineService'
 import achievementService from '../services/achievementService'
 
-const Canvas = ({ baseurl, initial_delay, i, setCanvas, sCount, setSCount, setEnd, achievements }) => {
+const Canvas = ({ baseurl, i, setCanvas, sCount, setSCount, setEnd, achievements }) => {
 
     const [line, setLine] = useState('That was rather unpleasant to watch. Do you believe that poor little creature will fall in the end?')
     const [choices, setChoices] = useState(['I hope so.', 'No.', 'Remain silent'])
@@ -30,23 +30,15 @@ const Canvas = ({ baseurl, initial_delay, i, setCanvas, sCount, setSCount, setEn
             .then((count) => setRCount(count))
     }, [])
 
-    const nextLine = (path) => {
-        lineService.nextLine(path, index, setShowChoices, setLine, setChoices, setIndex)
-    }
-
     const handleFirstChoice = (path) => {
         setPath(path)
         nextLine(path)
     }
 
-    // show choices after first Line
-    if (path === '') {
-        setTimeout(() => {
-            setShowChoices(true)
-        }, initial_delay * 1000)
+    const nextLine = (path) => {
+        lineService.nextLine(path, index, setShowChoices, setLine, setChoices, setIndex)
     }
 
-    // handle the endings
     const renderAchievement = (ending, delay) => {
         setTimeout(() => {
             setEnd(ending)
@@ -69,6 +61,12 @@ const Canvas = ({ baseurl, initial_delay, i, setCanvas, sCount, setSCount, setEn
         <div className='App'>
             <div className='Canvas'>
                 <Header className='Header' moving={false} />
+                {
+                    path === '' && 
+                    <ReactAudioPlayer src={baseurl + 'lines/start.wav'} autoPlay onEnded={() => {
+                        setShowChoices(true)
+                    }} />
+                }
                 {
                     path !== '' &&
                     <ReactAudioPlayer src={baseurl + 'lines/' + path + '_path' + String(index - 1) + '.wav'} autoPlay onEnded={() => {
