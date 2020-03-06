@@ -13,6 +13,7 @@ import AchievementList from './components/AchievementList'
 import Chapel from './components/Chapel'
 import Warning from './components/Warning'
 import PermissionDialogue from './components/PermissionDialogue'
+import End from './components/End'
 
 const App = () => {
 
@@ -71,8 +72,7 @@ const App = () => {
 
   if (credits === true) {
     return (
-      <Credits setStartEnabled={setStartEnabled} setCanvas={setCanvas}
-        setMainscreen={setMainscreen} setCredits={setCredits} />
+      <Credits setCredits={setCredits} setEnd={setEnd} />
     )
   }
 
@@ -117,6 +117,12 @@ const App = () => {
     return (
       <Everything achievements={achievements} setCredits={setCredits} setEnd={setEnd}
         cookiePermission={cookiePermission} />
+    )
+  }
+
+  if (end === 'end') {
+    return (
+      <End setMainScreen={setMainscreen} setStartEnabled={setStartEnabled} setEnd={setEnd} />
     )
   }
 }

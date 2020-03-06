@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-image: url('./background.png');
 }
 
 .App {
@@ -32,6 +33,15 @@ h2 {
 .Header {
   max-width: 100vw;
   color: gainsboro;
+}
+
+.Solid {
+  width: 100vw;
+  height: 20vh;
+  top: 0;
+  position: fixed;
+  display: block;
+  z-index: 1;
 }
 
 .Body {
@@ -98,20 +108,6 @@ h2 {
   min-height: 50px;
   padding: 3%;
   color: gainsboro;
-}
-
-.Credits-left {
-  float: left;
-  margin-left: 4%;
-}
-
-.Credits-right {
-  float: right;
-  margin-right: 4%;
-}
-
-.Credits-gif {
-  max-width: 45vw;
 }
 
 .Credits-button {
@@ -182,4 +178,32 @@ small {
 
 .Warning {
   color: red;
+}
+
+.Credits {
+  margin: 0 auto;
+  max-width: 70vw;
+  animation: credits 51s ease-out;
+}
+
+.Credits-paragraph {
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+}
+
+@keyframes credits {
+  from {
+    margin-top: 100vh;
+  }
+  to {
+    margin-top: -181.5vh;
+  }
+}
+
+.End-gif {
+  max-width: 45vw;
+}
+
+.Link {
+  margin-bottom: 3%;
 }

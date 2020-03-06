@@ -1,37 +1,55 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import ReactAudioPlayer from 'react-audio-player'
+import sound from '../resources/credits.wav'
 import Header from './Header'
-import credits from '../resources/credits.gif'
-import audio from '../resources/credits.wav'
 
-const Credits = ({ setStartEnabled, setMainscreen, setCredits }) => {
-
-    const [showBack, setShowBack] = useState(false)
-
-    useEffect(() => {
-        new Audio(audio).play()
-        setTimeout(() => {
-            setShowBack(true)
-        }, 32000)
-    }, [])
+const Credits = ({ setCredits, setEnd }) => {
 
     return (
         <div className='App'>
-            <Header className='Header' moving={false} />
             <div className='Body'>
-                <div className='Credits-left'>
-                    <img className='Credits-gif' src={credits} alt='Dark creature sitting in a dark twitching room afraid.' />
-                </div>
-                <div className='Credits-right'>
-                    <img className='Credits-gif' src={credits} alt='Placeholder for credits' />
-                    <br></br>
-                    <small>Placeholder for credits</small>
-                </div>
-                <br></br>
-                {showBack && <button className='Credits-button' onClick={() => {
-                    setStartEnabled(true)
-                    setMainscreen(true)
+                <ReactAudioPlayer src={sound} autoPlay onEnded={() => {
+                    setEnd('end')
                     setCredits(false)
-                }} >Back</button>}
+                }} />
+                <div className='Credits'>
+                    <p className='Credits-paragraph Credits'>Created by Universami</p>
+                    <div>
+                        <h3>Characters</h3>
+                        <p>Death</p>
+                        <p>God</p>
+                        <p>Anarchy</p>
+                        <p>Satan</p>
+                        <p>Drunkard from Wakasa</p>
+                        <p>Yao Bikuni</p>
+                        <p>Death Doulas</p>
+                    </div>
+                    <div className='Credits-paragraph'>
+                        <h3>Audio</h3>
+                        <p>Death - IBM Watson KateV3</p>
+                        <p>God - The Holy Bible (KJV Dramatized Audio book) </p>
+                        <p>"The Good Book" - Tim Minchin</p>
+                        <p>"Routine" - Bambu</p>
+                        <p>"The sound of silence" - Pentatonix</p>
+                        <p>"Deal With The Devil" - Dope D.O.D.</p>
+                        <p>"Demons are a girl's best friend" - Powerwolf</p>
+                        <p>"Take me to church" - Hozier</p>
+                        <p>"Kun tää biisi loppuu" - Ruger Hauer</p>
+                    </div>
+                    <div className='Credits-paragraph'>
+                        <h3>Gifs</h3>
+                        <p>Vast banner - Universami</p>
+                        <p>Vast and The Bourgeois - Robert Ek</p>
+                        <p>God - Monty Python and The Holy Grail</p>
+                        <p>Twitchy room - Dain Fagerholm</p>
+                    </div>
+                    <div className='Credits-paragraph'>
+                        <h3>Links</h3>
+                        <p>The Order of the Good Death</p>
+                        <p>www.orderofthegooddeath.com</p>
+                    </div>
+                    <Header moving={false} />
+                </div>
             </div>
         </div>
     )
