@@ -6,7 +6,7 @@ import gif from '../resources/tale-of-creation.gif'
 import sound from '../resources/tale-of-creation.wav'
 import achievementService from '../services/achievementService'
 
-const TaleOfCreation = ({ setStartEnabled, setEnd, setMainscreen, sCount, cookiePermission, achievements, completeAchievement }) => {
+const TaleOfCreation = ({ setStartEnabled, setEnd, setMainscreen, sCount, achievements, cookiePermission }) => {
 
     const [showButton, setShowButton] = useState(false)
 
@@ -23,10 +23,10 @@ const TaleOfCreation = ({ setStartEnabled, setEnd, setMainscreen, sCount, cookie
                     showButton === true &&
                     <Button type='Achievement-button' text='To Beginning' handleClick={() => {
                         if (!achievementService.find(achievements, 'Onlooker') && sCount >= 9) {
-                            completeAchievement('Tale of Creation')
+                           achievementService.completeAchievement(cookiePermission, achievements, 'Tale of Creation')
                             setEnd('onlooker')
                         } else {
-                            completeAchievement('Tale of Creation')
+                           achievementService.completeAchievement(cookiePermission, achievements, 'Tale of Creation')
                             if (achievementService.allAchievements(achievements) === true) {
                                 setEnd('everything')
                             } else {

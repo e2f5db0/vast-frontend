@@ -6,7 +6,7 @@ import gif from '../resources/meet-your-death.gif'
 import sound from '../resources/meet-your-death.wav'
 import achievementService from '../services/achievementService'
 
-const MeetYourDeath = ({ setStartEnabled, setEnd, setMainscreen, sCount, achievements, completeAchievement }) => {
+const MeetYourDeath = ({ setStartEnabled, setEnd, setMainscreen, sCount, achievements, cookiePermission }) => {
 
     const [showButton, setShowButton] = useState(false)
 
@@ -23,10 +23,10 @@ const MeetYourDeath = ({ setStartEnabled, setEnd, setMainscreen, sCount, achieve
                     showButton === true &&
                     <Button type='Achievement-button' text='To Beginning' handleClick={() => {
                         if (!achievementService.find(achievements, 'Onlooker') && sCount >= 9) {
-                            completeAchievement('Meet Your Death')
+                            achievementService.completeAchievement(cookiePermission, achievements, 'Meet Your Death')
                             setEnd('onlooker')
                         } else {
-                            completeAchievement('Meet Your Death')
+                            achievementService.completeAchievement(cookiePermission, achievements, 'Meet Your Death')
                             if (achievementService.allAchievements(achievements) === true) {
                                 setEnd('everything')
                             } else {

@@ -4,8 +4,9 @@ import Button from './Button'
 import ReactAudioPlayer from 'react-audio-player'
 import gif from '../resources/everything.gif'
 import sound from '../resources/everything.wav'
+import achievementService from '../services/achievementService'
 
-const Everything = ({ completeAchievement }) => {
+const Everything = ({ achievements, cookiePermission }) => {
 
     const [showButton, setShowButton] = useState(false)
 
@@ -21,7 +22,7 @@ const Everything = ({ completeAchievement }) => {
                 {
                     showButton === true &&
                     <Button type='Achievement-button' text='To Beginning' handleClick={() => {
-                        completeAchievement('Everything')
+                       achievementService.completeAchievement(cookiePermission, achievements, 'Everything')
                         // render Completionist
                     }} />
                 }

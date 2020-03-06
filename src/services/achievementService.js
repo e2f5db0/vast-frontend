@@ -1,4 +1,17 @@
 
+const completeAchievement = (cookiePermission, achievements, achievement) => {
+    if (cookiePermission === true && find(achievements, achievement) === false) {
+        const aCount = achievements.get('aCount')
+        if (aCount) {
+            achievements.set(String(aCount), achievement)
+            achievements.set('aCount', Number(aCount) + 1)
+        } else {
+            achievements.set('aCount', 0)
+            completeAchievement(cookiePermission, achievements, achievement)
+        }
+    }
+}
+
 const allAchievements = (achievements) => {
     const achievementList = toList(achievements)
     if (achievementList.length === 4) {
@@ -76,5 +89,5 @@ const find = (achievements, string) => {
 
 export default {
     allAchievements, getDescription, toList, hasAchievements,
-    hasAchievement, find
+    hasAchievement, find, completeAchievement
 }

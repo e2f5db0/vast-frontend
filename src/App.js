@@ -13,13 +13,11 @@ import AchievementList from './components/AchievementList'
 import Chapel from './components/Chapel'
 import Warning from './components/Warning'
 import PermissionDialogue from './components/PermissionDialogue'
-import achievementService from './services/achievementService'
 
 const App = () => {
 
   const achievements = Cookies
 
-  const [cookiePermission, setCookiePermission] = useState(false)
   const [permissionDialogue, setPermissionDialogue] = useState(true)
   const [warning, setWarnign] = useState(false)
   const [canvas, setCanvas] = useState(false)
@@ -28,25 +26,13 @@ const App = () => {
   const [chapel, setChapel] = useState(false)
   const [achievementList, setAchievementList] = useState(false)
 
+  const [cookiePermission, setCookiePermission] = useState(false)
   const [startEnabled, setStartEnabled] = useState(false)
   const [end, setEnd] = useState('')
 
   const [sCount, setSCount] = useState(0)
 
   const baseurl = 'https://vast-backend.herokuapp.com/'
-
-  const completeAchievement = (achievement) => {
-    if (cookiePermission === true && achievementService.find(achievements, achievement) === false) {
-      const aCount = achievements.get('aCount')
-      if (aCount) {
-        achievements.set(String(aCount), achievement)
-        achievements.set('aCount', Number(aCount) + 1)
-      } else {
-        achievements.set('aCount', 0)
-        completeAchievement(achievement)
-      }
-    }
-  }
 
   if (permissionDialogue === true) {
     return (
@@ -63,7 +49,7 @@ const App = () => {
 
   if (canvas === true) {
     return (
-      <Canvas baseurl={baseurl} initial_delay={7} i={1} setCanvas={setCanvas}
+      <Canvas baseurl={baseurl} initial_delay={7} i={34} setCanvas={setCanvas}
         sCount={sCount} setSCount={setSCount} setEnd={setEnd} achievements={achievements} />
     )
   }
@@ -102,38 +88,34 @@ const App = () => {
   if (end === 'meet_your_death') {
     return (
       <MeetYourDeath setStartEnabled={setStartEnabled} setEnd={setEnd} sCount={sCount}
-        completeAchievement={completeAchievement} setMainscreen={setMainscreen}
-        cookiePermission={cookiePermission} achievements={achievements} />
+        setMainscreen={setMainscreen} achievements={achievements} cookiePermission={cookiePermission} />
     )
   }
 
   if (end === 'onlooker') {
     return (
       <Onlooker setStartEnabled={setStartEnabled} setEnd={setEnd} setMainscreen={setMainscreen}
-        cookiePermission={cookiePermission} achievements={achievements}
-        completeAchievement={completeAchievement} />
+        achievements={achievements} cookiePermission={cookiePermission} />
     )
   }
 
   if (end === 'rotten_religion') {
     return (
       <RottenReligion setStartEnabled={setStartEnabled} setEnd={setEnd} sCount={sCount}
-        completeAchievement={completeAchievement} setMainscreen={setMainscreen}
-        cookiePermission={cookiePermission} achievements={achievements} />
+        setMainscreen={setMainscreen} achievements={achievements} cookiePermission={cookiePermission} />
     )
   }
 
   if (end === 'tale_of_creation') {
     return (
       <TaleOfCreation setStartEnabled={setStartEnabled} setEnd={setEnd} sCount={sCount}
-        completeAchievement={completeAchievement} setMainscreen={setMainscreen}
-        cookiePermission={cookiePermission} achievements={achievements} />
+        setMainscreen={setMainscreen} achievements={achievements} cookiePermission={cookiePermission} />
     )
   }
 
   if (end === 'everything') {
     return (
-      <Everything completeAchievement={completeAchievement} />
+      <Everything achievements={achievements} cookiePermission={cookiePermission} />
     )
   }
 }
