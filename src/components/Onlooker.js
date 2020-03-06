@@ -21,7 +21,7 @@ const Onlooker = ({ setStartEnabled, setEnd, setMainscreen, achievements, cookie
                 <br></br>
                 {
                     showButton === true &&
-                    <Button type='Achievement-button' text='To Beginning' handleClick={() => {
+                    <Button type='Achievement-button' text='To Vast' handleClick={() => {
                         achievementService.completeAchievement(cookiePermission, achievements, 'Onlooker')
                         // check if all achievements are completed
                         if (achievementService.allAchievements(achievements) === true) {

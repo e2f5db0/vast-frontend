@@ -21,7 +21,7 @@ const Everything = ({ achievements, cookiePermission }) => {
                 <br></br>
                 {
                     showButton === true &&
-                    <Button type='Achievement-button' text='To Beginning' handleClick={() => {
+                    <Button type='Achievement-button' text='Credits' handleClick={() => {
                        achievementService.completeAchievement(cookiePermission, achievements, 'Everything')
                         // render Completionist
                     }} />

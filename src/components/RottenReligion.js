@@ -21,7 +21,7 @@ const RottenReligion = ({ setStartEnabled, setEnd, setMainscreen, sCount, achiev
                 <br></br>
                 {
                     showButton === true &&
-                    <Button type='Achievement-button' text='To Beginning' handleClick={() => {
+                    <Button type='Achievement-button' text='To Vast' handleClick={() => {
                         if (!achievementService.find(achievements, 'Onlooker') && sCount >= 9) {
                            achievementService.completeAchievement(cookiePermission, achievements, 'Rotten Religion')
                             setEnd('onlooker')
