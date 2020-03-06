@@ -6,7 +6,7 @@ import gif from '../resources/everything.gif'
 import sound from '../resources/everything.wav'
 import achievementService from '../services/achievementService'
 
-const Everything = ({ achievements, cookiePermission }) => {
+const Everything = ({ achievements, setCredits, setEnd, cookiePermission }) => {
 
     const [showButton, setShowButton] = useState(false)
 
@@ -23,7 +23,8 @@ const Everything = ({ achievements, cookiePermission }) => {
                     showButton === true &&
                     <Button type='Achievement-button' text='Credits' handleClick={() => {
                        achievementService.completeAchievement(cookiePermission, achievements, 'Everything')
-                        // render Completionist
+                        setCredits(true)
+                        setEnd('')
                     }} />
                 }
             </div>

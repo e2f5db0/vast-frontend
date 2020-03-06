@@ -5,7 +5,7 @@ import vast from '../resources/vast.gif'
 import intro from '../resources/intro.wav'
 import achievementService from '../services/achievementService'
 
-const MainScreen = ({ baseurl, startEnabled, setMainscreen, setCanvas, setCredits, setAchievementList, setChapel, achievements }) => {
+const MainScreen = ({ startEnabled, setMainscreen, setCanvas, setAchievementList, setChapel, achievements }) => {
 
     const [volume, setVolume] = useState('on')
     const [message, setMessage] = useState('')
@@ -46,18 +46,18 @@ const MainScreen = ({ baseurl, startEnabled, setMainscreen, setCanvas, setCredit
                     }} />}
                 </div>
                 <div className='Button-stack'>
+                    {
+                        achievementService.hasAchievements(achievements) &&
+                        <button className='Chapel-button' onClick={() => {
+                            setChapel(true)
+                            setMainscreen(false)
+                        }} >Chapel
+                        </button>
+                    }
                     <button className='Achievements-button' onClick={() => {
                         setAchievementList(true)
                         setMainscreen(false)
                     }} >Achievements</button>
-                    {achievementService.hasAchievements(achievements) && <button className='Chapel-button' onClick={() => {
-                        setChapel(true)
-                        setMainscreen(false)
-                    }} >Chapel</button>}
-                    {achievementService.hasAchievements(achievements) && <button className='Credits-button' onClick={() => {
-                        setCredits(true)
-                        setMainscreen(false)
-                    }} >Credits</button>}
                 </div>
             </div>
         </div>

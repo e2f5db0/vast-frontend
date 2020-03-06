@@ -56,9 +56,9 @@ const App = () => {
 
   if (mainscreen === true) {
     return (
-      <MainScreen baseurl={baseurl} startEnabled={startEnabled} setAchievementList={setAchievementList}
+      <MainScreen startEnabled={startEnabled} setAchievementList={setAchievementList}
         achievements={achievements} setMainscreen={setMainscreen} setCanvas={setCanvas}
-        setCredits={setCredits} setChapel={setChapel} />
+        setChapel={setChapel} />
     )
   }
 
@@ -115,7 +115,8 @@ const App = () => {
 
   if (end === 'everything') {
     return (
-      <Everything achievements={achievements} cookiePermission={cookiePermission} />
+      <Everything achievements={achievements} setCredits={setCredits} setEnd={setEnd}
+        cookiePermission={cookiePermission} />
     )
   }
 }
