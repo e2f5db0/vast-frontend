@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import end from '../resources/end.gif'
 import Header from './Header'
+import solid from '../background.png'
 
 const End = ({ setMainScreen, setStartEnabled, setEnd }) => {
 
@@ -15,7 +16,7 @@ const End = ({ setMainScreen, setStartEnabled, setEnd }) => {
     return (
         <div className='App'>
             <div className='Body'>
-                <Header className='Header' moving={false} />
+                <img className='Header' src={solid} alt='grey solid' />
                 <img className='End-gif' src={end} alt='Dark creature sitting in a dark twitching room afraid.' />
                 <br></br>
                 {
