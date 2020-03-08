@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactAudioPlayer from 'react-audio-player'
 import sound from '../resources/credits.wav'
-import Header from './Header'
+import vast from '../resources/vast-logo.jpg'
 
 const Credits = ({ setCredits, setEnd }) => {
 
@@ -13,8 +13,10 @@ const Credits = ({ setCredits, setEnd }) => {
                     setCredits(false)
                 }} />
                 <div className='Credits'>
-                    <Header className='Header' moving={false} />
-                    <p className='Credits-paragraph Credits'>Created by Universami</p>
+                    <div className='Credits-paragraph'>
+                        <img src={vast} alt='Vast' />
+                        <p>Created by Universami</p>
+                    </div>
                     <div>
                         <h3>Characters</h3>
                         <p>Death</p>

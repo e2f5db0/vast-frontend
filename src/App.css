@@ -183,7 +183,7 @@ small {
 .Credits {
   margin: 0 auto;
   max-width: 70vw;
-  animation: credits 51s linear;
+  animation: credits 51s ease-in;
 }
 
 .Credits-paragraph {
@@ -196,7 +196,7 @@ small {
     margin-top: 100vh;
   }
   to {
-    margin-top: -210vh;
+    margin-top: -200vh;
   }
 }
 
