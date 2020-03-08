@@ -2,7 +2,10 @@
 
 # Choose carefully
 
-Vast is a text-adventure web game created with React.js.
+Vast is a voice narrated text-adventure web game created with React.js.
+
+The player will come across mythical entities on their way to understanding and acceptance. The player will be confronted with their mortality and death itself.
+It is recommended to let curiosity guide one's path. Good luck.
 
 [Backend](https://github.com/universami/vast-backend)
 
