@@ -13,6 +13,7 @@ const Credits = ({ setCredits, setEnd }) => {
                     setCredits(false)
                 }} />
                 <div className='Credits'>
+                    <Header className='Header' moving={false} />
                     <p className='Credits-paragraph Credits'>Created by Universami</p>
                     <div>
                         <h3>Characters</h3>
@@ -48,7 +49,6 @@ const Credits = ({ setCredits, setEnd }) => {
                         <p>The Order of the Good Death</p>
                         <p>www.orderofthegooddeath.com</p>
                     </div>
-                    <Header moving={false} />
                 </div>
             </div>
         </div>
