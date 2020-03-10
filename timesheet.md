@@ -27,6 +27,7 @@ Time invested in Vast (backend & frontend)
 | 05.03.2020 | 8        | Make storing cookies optional. Automatically detect when sound has played & render buttons accordingly (globally). Refactor and de-refactor. Guide the player on right paths depending on their progress. Update readme. Test that completing all achievements is possible without major bugs. |
 | 06.03.2020 | 5        | Refactor completeAchievement() into achievementService. Create credits & the final ending. |
 | 08.03.2020 | 7        | Setup a mobile development environment (Ubuntu emulator) due to not having access to a computer. Add more detailed description to readme. Add link to Heroku on github. Test all possible permutations of paths in order to find bugs & to check the story coherency. Change the order in Credits. |
+| 10.03.2020 | 3        | Plan the mechanics for the final minigame & create a react component ChapelRevisited.js (minigame). |
 |            |          |            |
-| Total      | 144      |            |
+| Total      | 147      |            |
 |            |          |            |
