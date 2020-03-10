@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import end from '../resources/end.gif'
-import Header from './Header'
 import solid from '../background.png'
 
-const End = ({ setMainScreen, setStartEnabled, setEnd }) => {
+const End = ({ setMainScreen, setStartEnabled, setEnd, setChapelRevisited }) => {
 
     const [showButton, setShowButton] = useState(false)
 
@@ -30,6 +29,11 @@ const End = ({ setMainScreen, setStartEnabled, setEnd }) => {
                             setMainScreen(true)
                             setEnd('')
                         }} >Back to Vast
+                        </button>
+                        <button className='Main-button' onClick={() => {
+                            setEnd('')
+                            setChapelRevisited(true)
+                        }} >Chapel (Revisited)
                         </button>
                     </div>
                 }

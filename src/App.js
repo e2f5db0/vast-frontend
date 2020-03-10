@@ -14,18 +14,20 @@ import Chapel from './components/Chapel'
 import Warning from './components/Warning'
 import PermissionDialogue from './components/PermissionDialogue'
 import End from './components/End'
+import ChapelRevisited from './components/ChapelRevisited'
 
 const App = () => {
 
   const achievements = Cookies
 
-  const [permissionDialogue, setPermissionDialogue] = useState(true)
+  const [permissionDialogue, setPermissionDialogue] = useState(false)
   const [warning, setWarnign] = useState(false)
   const [canvas, setCanvas] = useState(false)
   const [mainscreen, setMainscreen] = useState(false)
   const [credits, setCredits] = useState(false)
   const [chapel, setChapel] = useState(false)
   const [achievementList, setAchievementList] = useState(false)
+  const [chapelRevisited, setChapelRevisited] = useState(true)
 
   const [cookiePermission, setCookiePermission] = useState(false)
   const [startEnabled, setStartEnabled] = useState(false)
@@ -83,6 +85,13 @@ const App = () => {
     )
   }
 
+  if (chapelRevisited === true) {
+    return (
+      <ChapelRevisited setChapelRevisited={setChapelRevisited} setMainScreen={setMainscreen}
+        setStartEnabled={setStartEnabled} />
+    )
+  }
+
   // Render endings
 
   if (end === 'meet_your_death') {
@@ -122,7 +131,8 @@ const App = () => {
 
   if (end === 'end') {
     return (
-      <End setMainScreen={setMainscreen} setStartEnabled={setStartEnabled} setEnd={setEnd} />
+      <End setMainScreen={setMainscreen} setStartEnabled={setStartEnabled} setEnd={setEnd}
+        setChapelRevisited={setChapelRevisited} />
     )
   }
 }

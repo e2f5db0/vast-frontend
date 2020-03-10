@@ -162,11 +162,6 @@ h2 {
   max-height: 50vh;
 }
 
-.God-speaking {
-  max-width: 70vw;
-  max-height: 50vh;
-}
-
 small {
   font-style: italic;
 }
@@ -206,4 +201,20 @@ small {
 
 .Link {
   margin-bottom: 3%;
+}
+
+.Chapel-revisited-box {
+  position: relative;
+  margin: 50px auto;
+  width: 400px;
+  height: 400px;
+  border: 2px solid #000;
+  background-color: gainsboro;
+}
+
+.Player {
+  position: absolute;
+  width: 4%;
+  height: 4%;
+  border: 1px solid #000000;
 }
