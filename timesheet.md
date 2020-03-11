@@ -28,6 +28,7 @@ Time invested in Vast (backend & frontend)
 | 06.03.2020 | 5        | Refactor completeAchievement() into achievementService. Create credits & the final ending. |
 | 08.03.2020 | 7        | Setup a mobile development environment (Ubuntu emulator) due to not having access to a computer. Add more detailed description to readme. Add link to Heroku on github. Test all possible permutations of paths in order to find bugs & to check the story coherency. Change the order in Credits. |
 | 10.03.2020 | 3        | Plan the mechanics for the final minigame & create a react component ChapelRevisited.js (minigame). |
+| 11.03.2020 | 8        | Create Minigame component & merge ChapelRevisited.js into it. Add falling crosses and handle win & game over in the final minigame. |
 |            |          |            |
-| Total      | 147      |            |
+| Total      | 155      |            |
 |            |          |            |
