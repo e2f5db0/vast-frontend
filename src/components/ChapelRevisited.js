@@ -6,6 +6,7 @@ import banner from '../background.png'
 import sound from '../resources/chapel-revisited.wav'
 import evil_laugh from '../resources/evil-laugh.wav'
 import Button from './Button'
+import Minigame from './Minigame'
 
 const ChapelRevisited = ({ setChapelRevisited, setMainScreen, setStartEnabled }) => {
 
@@ -39,8 +40,8 @@ const ChapelRevisited = ({ setChapelRevisited, setMainScreen, setStartEnabled })
                 <div>
                     <p>{message}</p>
                 </div>
-                <div className='Chapel-revisited-box'>
-                    <div className='Player'></div>
+                <div>
+                    <Minigame />
                 </div>
                 {
                     beaten === true && 
