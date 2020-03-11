@@ -14,7 +14,7 @@ import Chapel from './components/Chapel'
 import Warning from './components/Warning'
 import PermissionDialogue from './components/PermissionDialogue'
 import End from './components/End'
-import ChapelRevisited from './components/ChapelRevisited'
+import Minigame from './components/Minigame'
 
 const App = () => {
 
@@ -87,7 +87,7 @@ const App = () => {
 
   if (chapelRevisited === true) {
     return (
-      <ChapelRevisited setChapelRevisited={setChapelRevisited} setMainScreen={setMainscreen}
+      <Minigame setChapelRevisited={setChapelRevisited} setMainScreen={setMainscreen}
         setStartEnabled={setStartEnabled} />
     )
   }
