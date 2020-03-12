@@ -18,11 +18,21 @@ export const TETROMINOS = {
     ]
     , color: '227, 78, 78'
   },
+  O: {
+    shape: [
+      ['O'],
+    ],
+    color: '147, 147, 147'
+  },
 };
 
 export const randomTetromino = () => {
-  const tetrominos = 'SZZ';
+  const tetrominos = 'SZZ'
   const randTetromino =
-    tetrominos[Math.floor(Math.random() * tetrominos.length)];
-  return TETROMINOS[randTetromino];
-};
+    tetrominos[Math.floor(Math.random() * tetrominos.length)]
+  return TETROMINOS[randTetromino]
+}
+
+export const getPlayer = () => {
+  return TETROMINOS['O'].shape
+}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { createStage } from '../gameHelpers'
 
-export const useStage = (block, resetBlock) => {
+export const useStage = (block, resetBlock, player) => {
   const [stage, setStage] = useState(createStage())
 
   useEffect(() => {
@@ -25,6 +25,17 @@ export const useStage = (block, resetBlock) => {
         row.forEach((value, x) => {
           if (value !== 0) {
             newStage[y + block.pos.y][x + block.pos.x] = [
+              value,
+              'clear',
+            ]
+          }
+        })
+      })
+
+      player.tetromino.forEach((row, y) => {
+        row.forEach((value, x) => {
+          if (value !== 0) {
+            newStage[y + player.pos.y][x + player.pos.x] = [
               value,
               'clear',
             ]

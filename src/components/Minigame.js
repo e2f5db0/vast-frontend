@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import ReactAudioPlayer from 'react-audio-player'
-import { createStage, checkCollision } from '../gameHelpers'
+import { createStage, checkCollision, checkBoundaries } from '../gameHelpers'
 import { StyledGridWrapper, StyledGrid } from './styles/StyledGrid'
 import { useInterval } from '../hooks/useInterval'
-import { useBlock } from '../hooks/useBlock'
+import { useBlock, usePlayer } from '../hooks/useBlock'
 import { useStage } from '../hooks/useStage'
 import Stage from './Stage'
 import Button from './Button'
@@ -29,11 +29,18 @@ const Minigame = ({ setChapelRevisited, setMainScreen, setStartEnabled }) => {
   const [message, setMessage] = useState('Move with the arrow keys')
 
   const [block, updateBlockPos, resetBlock] = useBlock()
-  const [stage, setStage] = useStage(block, resetBlock)
+  const [player, updatePlayerPos] = usePlayer()
+  const [stage, setStage] = useStage(block, resetBlock, player)
 
   const moveHorizontally = dir => {
-    if (!checkCollision(block, stage, { x: dir, y: 0 })) {
-      updateBlockPos({ x: dir, y: 0 })
+    if (!checkBoundaries(player, stage, { x: dir, y: 0 })) {
+      updatePlayerPos({ x: dir, y: 0 })
+    }
+  }
+
+  const moveVertically = dir => {
+    if (!checkBoundaries(player, stage, { x: 0, y: dir })) {
+      updatePlayerPos({ x: 0, y: dir })
     }
   }
 
@@ -50,7 +57,9 @@ const Minigame = ({ setChapelRevisited, setMainScreen, setStartEnabled }) => {
     if (!checkCollision(block, stage, { x: 0, y: 1 })) {
       updateBlockPos({ x: 0, y: 1, collided: false })
     } else {
-      if (gameOver) {
+      // this is impossible
+      if ('god' === 'good') {
+        setGameOver(true)
         setMessage('You are dead.')
         setStop(true)
         setDropTime(null)
@@ -71,18 +80,18 @@ const Minigame = ({ setChapelRevisited, setMainScreen, setStartEnabled }) => {
   }, dropTime)
 
   const move = ({ keyCode }) => {
-    if (!stop) {
-      if (keyCode === 37) {
-        // arrow right
-        moveHorizontally(-1)
-      } else if (keyCode === 39) {
-        // arrow left
-        moveHorizontally(1)
-      } else if (keyCode === 40) {
-        // arrow down
-      } else if (keyCode === 38) {
-        // arrow up
-      }
+    if (keyCode === 37) {
+      // arrow right
+      moveHorizontally(-1)
+    } else if (keyCode === 39) {
+      // arrow left
+      moveHorizontally(1)
+    } else if (keyCode === 40) {
+      // arrow down
+      moveVertically(1)
+    } else if (keyCode === 38) {
+      // arrow up
+      moveVertically(-1)
     }
   }
 
