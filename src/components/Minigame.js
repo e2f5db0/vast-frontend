@@ -14,7 +14,7 @@ import god_suspicious from '../resources/god-suspicious.png'
 import god_confused from '../resources/god-confused.gif'
 import god_beaten from '../resources/god-beaten.png'
 import banner from '../background.png'
-import music from '../resources/chapel-revisited.wav'
+import music from '../resources/minigame.wav'
 import evil_laugh from '../resources/evil-laugh.wav'
 import boing from '../resources/minigame-confused.wav'
 import death1 from '../resources/minigame-death1.wav'
@@ -22,7 +22,7 @@ import death2 from '../resources/minigame-death2.wav'
 import fatality from '../resources/minigame-fatality.wav'
 import goodbye from '../resources/minigame-end.wav'
 
-const Minigame = ({ setChapelRevisited, setMainScreen, setStartEnabled }) => {
+const Minigame = ({ setMiniGame, setMainScreen, setStartEnabled }) => {
 
   const [laugh, setLaugh] = useState(false)
 
@@ -223,7 +223,7 @@ const Minigame = ({ setChapelRevisited, setMainScreen, setStartEnabled }) => {
         {
           end === true &&
           <Button type='Main-button' text='To Vast' handleClick={() => {
-            setChapelRevisited(false)
+            setMiniGame(false)
             setStartEnabled(true)
             setMainScreen(true)
           }} />

@@ -5,7 +5,7 @@ import vast from '../resources/vast.gif'
 import intro from '../resources/intro.wav'
 import achievementService from '../services/achievementService'
 
-const MainScreen = ({ startEnabled, setMainscreen, setCanvas, setAchievementList, setChapel, achievements }) => {
+const MainScreen = ({ startEnabled, setMainscreen, setCanvas, setAchievementList, setChapel, setChapelRevisited, achievements }) => {
 
     const [volume, setVolume] = useState('on')
     const [message, setMessage] = useState('')
@@ -49,8 +49,13 @@ const MainScreen = ({ startEnabled, setMainscreen, setCanvas, setAchievementList
                     {
                         achievementService.hasAchievements(achievements) &&
                         <button className='Chapel-button' onClick={() => {
-                            setChapel(true)
-                            setMainscreen(false)
+                            if (achievementService.hasAchievement(achievements, 'E')) {
+                                setChapelRevisited(true)
+                                setMainscreen(false)
+                            } else {
+                                setChapel(true)
+                                setMainscreen(false)
+                            }
                         }} >Chapel
                         </button>
                     }

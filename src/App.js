@@ -15,19 +15,21 @@ import Warning from './components/Warning'
 import PermissionDialogue from './components/PermissionDialogue'
 import End from './components/End'
 import Minigame from './components/Minigame'
+import ChapelRevisited from './components/ChapelRevisited'
 
 const App = () => {
 
   const achievements = Cookies
 
-  const [permissionDialogue, setPermissionDialogue] = useState(true)
+  const [permissionDialogue, setPermissionDialogue] = useState(false)
   const [warning, setWarnign] = useState(false)
   const [canvas, setCanvas] = useState(false)
   const [mainscreen, setMainscreen] = useState(false)
   const [credits, setCredits] = useState(false)
   const [chapel, setChapel] = useState(false)
   const [achievementList, setAchievementList] = useState(false)
-  const [chapelRevisited, setChapelRevisited] = useState(false)
+  const [miniGame, setMiniGame] = useState(false)
+  const [chapelRevisited, setChapelRevisited] = useState(true)
 
   const [cookiePermission, setCookiePermission] = useState(false)
   const [startEnabled, setStartEnabled] = useState(false)
@@ -52,7 +54,7 @@ const App = () => {
 
   if (canvas === true) {
     return (
-      <Canvas baseurl={baseurl} i={34} setCanvas={setCanvas} sCount={sCount} setSCount={setSCount}
+      <Canvas baseurl={baseurl} i={1} setCanvas={setCanvas} sCount={sCount} setSCount={setSCount}
         setEnd={setEnd} achievements={achievements} />
     )
   }
@@ -61,7 +63,7 @@ const App = () => {
     return (
       <MainScreen startEnabled={startEnabled} setAchievementList={setAchievementList}
         achievements={achievements} setMainscreen={setMainscreen} setCanvas={setCanvas}
-        setChapel={setChapel} />
+        setChapel={setChapel} setChapelRevisited={setChapelRevisited} />
     )
   }
 
@@ -69,6 +71,12 @@ const App = () => {
     return (
       <Chapel baseurl={baseurl} setChapel={setChapel} setStartEnabled={setStartEnabled}
         setMainscreen={setMainscreen} />
+    )
+  }
+
+  if (chapelRevisited === true) {
+    return (
+      <ChapelRevisited setChapelRevisited={setChapelRevisited} setMainScreen={setMainscreen} />
     )
   }
 
@@ -85,9 +93,9 @@ const App = () => {
     )
   }
 
-  if (chapelRevisited === true) {
+  if (miniGame === true) {
     return (
-      <Minigame setChapelRevisited={setChapelRevisited} setMainScreen={setMainscreen}
+      <Minigame setMiniGame={setMiniGame} setMainScreen={setMainscreen}
         setStartEnabled={setStartEnabled} />
     )
   }
