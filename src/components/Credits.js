@@ -36,7 +36,8 @@ const Credits = ({ setCredits, setEnd }) => {
                         <p>"The sound of silence" - Pentatonix</p>
                         <p>"Deal With The Devil" - Dope D.O.D.</p>
                         <p>"Demons are a girl's best friend" - Powerwolf</p>
-                        <p>"Take me to church" - Hozier</p>
+                        <p>"Take Me to Church" - Hozier</p>
+                        <p>"Avenged Sevenfold: God Hates Us" - Synthesia</p>
                         <p>"Kun tää biisi loppuu" - Ruger Hauer</p>
                     </div>
                     <div className='Credits-paragraph'>

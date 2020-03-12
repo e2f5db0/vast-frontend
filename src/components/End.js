@@ -24,17 +24,19 @@ const End = ({ setMainScreen, setStartEnabled, setEnd, setChapelRevisited }) => 
                         <p>More death:</p>
                         <a className='Link' href='http://www.orderofthegooddeath.com/' >The Order of a Good Death</a>
                         <br></br>
-                        <button className='Main-button' onClick={() => {
-                            setStartEnabled(false)
-                            setMainScreen(true)
-                            setEnd('')
-                        }} >Back to Vast
-                        </button>
-                        <button className='Main-button' onClick={() => {
-                            setEnd('')
-                            setChapelRevisited(true)
-                        }} >Chapel (Revisited)
-                        </button>
+                        <div className='Centered'>
+                            <button className='Main-button' onClick={() => {
+                                setStartEnabled(false)
+                                setMainScreen(true)
+                                setEnd('')
+                            }} >Back to Vast
+                            </button>
+                            <button className='Main-button' onClick={() => {
+                                setEnd('')
+                                setChapelRevisited(true)
+                            }} >Chapel (Revisited)
+                            </button>
+                        </div>
                     </div>
                 }
             </div>
