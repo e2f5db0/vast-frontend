@@ -8,29 +8,35 @@ import { useStage } from '../hooks/useStage'
 import Stage from './Stage'
 import Button from './Button'
 
+import god from '../resources/god.png'
 import god_speaking from '../resources/god-speaking.gif'
+import god_suspicious from '../resources/god-suspicious.png'
+import god_confused from '../resources/god-confused.gif'
 import god_beaten from '../resources/god-beaten.png'
 import banner from '../background.png'
 import music from '../resources/chapel-revisited.wav'
 import evil_laugh from '../resources/evil-laugh.wav'
+import boing from '../resources/minigame-confused.wav'
+import death1 from '../resources/minigame-death1.wav'
+import death2 from '../resources/minigame-death2.wav'
+import fatality from '../resources/minigame-fatality.wav'
+import goodbye from '../resources/minigame-end.wav'
 
 const Minigame = ({ setChapelRevisited, setMainScreen, setStartEnabled }) => {
 
-  const [laugh, setLaugh] = useState(true)
-  const [beaten, setBeaten] = useState(false)
-  const [gameOver, setGameOver] = useState(false)
-  const [stop, setStop] = useState(false)
+  const [laugh, setLaugh] = useState(false)
 
-  useEffect(() => {
-    startGame()
-  }, [])
+  const [status, setStatus] = useState('normal')
+  const [gameOver, setGameOver] = useState(true)
 
   const [dropTime, setDropTime] = useState(null)
-  const [message, setMessage] = useState('Move with the arrow keys')
+  const [message, setMessage] = useState('Dodge with the arrow keys.')
 
   const [block, updateBlockPos, resetBlock] = useBlock()
   const [player, updatePlayerPos] = usePlayer()
   const [stage, setStage] = useStage(block, resetBlock, player)
+
+  const [end, setEnd] = useState(false)
 
   const moveHorizontally = dir => {
     if (!checkBoundaries(player, stage, { x: dir, y: 0 })) {
@@ -45,7 +51,7 @@ const Minigame = ({ setChapelRevisited, setMainScreen, setStartEnabled }) => {
   }
 
   const startGame = () => {
-    setMessage('')
+    setMessage('God wants to kill you.')
     setStage(createStage())
     setDropTime(200)
     resetBlock()
@@ -61,11 +67,9 @@ const Minigame = ({ setChapelRevisited, setMainScreen, setStartEnabled }) => {
       if ('god' === 'good') {
         setGameOver(true)
         setMessage('You are dead.')
-        setStop(true)
         setDropTime(null)
-      } else if (beaten) {
-        setStop(true)
-        setMessage('You did it! We are finally free!')
+      } else if (status === 'beaten') {
+        setMessage('He is finished! We are finally free!')
       } else {
         updateBlockPos({ x: 0, y: 0, collided: true })
       }
@@ -95,29 +99,113 @@ const Minigame = ({ setChapelRevisited, setMainScreen, setStartEnabled }) => {
     }
   }
 
+  const godsPhases = () => {
+
+    setTimeout(() => {
+      setMessage('He is amused by his own wrath.')
+    }, 20000)
+
+    setTimeout(() => {
+      setMessage('His wrath intensifies.')
+    }, 45000)
+
+    setTimeout(() => {
+      setMessage('His wrath is getting intense!')
+    }, 60000)
+
+    setTimeout(() => {
+      setLaugh(false)
+      setMessage('God is getting suspicious.')
+      setStatus('suspicious')
+    }, 66000)
+
+    setTimeout(() => {
+      new Audio(boing).play()
+      setMessage('God is confused!')
+      setLaugh(false)
+      setStatus('confused')
+      new Audio(death2).play()
+    }, 74000)
+
+    setTimeout(() => {
+      setLaugh(true)
+      setMessage('God snapped out of it!')
+      setStatus('laughing')
+    }, 83000)
+
+    setTimeout(() => {
+      new Audio(boing).play()
+      setLaugh(false)
+      setStatus('confused')
+      setMessage('God hurt himself in his confusion!')
+    }, 90000)
+
+    setTimeout(() => {
+      setLaugh(true)
+      setMessage('But he recovered!')
+      setStatus('laughing')
+    }, 100000)
+
+    setTimeout(() => {
+      setMessage('The magic spell is starting to wear off.')
+    }, 110000)
+
+    setTimeout(() => {
+      new Audio(boing).play()
+      setLaugh(false)
+      setStatus('confused')
+      setMessage('He is getting weaker! Finish him!')
+    }, 119000)
+  }
+
   return (
     <div className='App' role="button" tabIndex="0" onKeyDown={e => move(e)}>
       <div className='Body'>
         <img src={banner} alt='banner' />
+        <ReactAudioPlayer src={death1} autoPlay onEnded={() => {
+          startGame()
+          setLaugh(true)
+          setStatus('laughing')
+          godsPhases()
+        }} />
         {
           gameOver === false &&
           <ReactAudioPlayer src={music} autoPlay onEnded={() => {
+            setEnd(true)
             setLaugh(false)
-            setBeaten(true)
+            setStatus('beaten')
           }} />
         }
         {
           laugh === true &&
           <ReactAudioPlayer src={evil_laugh} autoPlay loop />
         }
+        {
+          end === true &&
+          <ReactAudioPlayer src={fatality} autoPlay onEnded={() => {
+            new Audio(goodbye).play()
+          }} />
+        }
         <div>
           {
-            beaten === false &&
-            <img src={god_speaking} className='God' alt='God speaking' />
+            status === 'normal' &&
+            <img src={god} className='God' alt='God speaking' />
           }
           {
-            beaten === true &&
-            <img src={god_beaten} className='God' alt='God beaten' />
+            status === 'suspicious' &&
+            <img src={god_suspicious} className='God' alt='God is suspicious' />
+          }
+          {
+            status === 'laughing' &&
+            <img src={god_speaking} className='God' alt='God is laughing' />
+          }
+          {
+            status === 'confused' &&
+            <img src={god_confused} className='God' alt='God is confused' />
+          }
+          {
+            status === 'beaten' &&
+            <img src={god_beaten} className='God' alt='God is beaten' />
           }
         </div>
         <div>
@@ -130,14 +218,10 @@ const Minigame = ({ setChapelRevisited, setMainScreen, setStartEnabled }) => {
             <div>
               <p>{message}</p>
             </div>
-            {
-              gameOver === true &&
-              <Button type='Main-button' text='Again' handleClick={() => startGame()} />
-            }
           </div>
         </div>
         {
-          beaten === true &&
+          end === true &&
           <Button type='Main-button' text='To Vast' handleClick={() => {
             setChapelRevisited(false)
             setStartEnabled(true)

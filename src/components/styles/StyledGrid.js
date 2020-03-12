@@ -8,7 +8,7 @@ export const StyledGridWrapper = styled.div`
 export const StyledGrid = styled.div`
   display: flex;
   align-items: flex-start;
-  padding: 40px;
+  padding: 15px;
   margin: 0 auto;
   max-width: 900px;
 `

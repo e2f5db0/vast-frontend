@@ -1,5 +1,5 @@
 export const STAGE_WIDTH = 10
-export const STAGE_HEIGHT = 14
+export const STAGE_HEIGHT = 11
 
 export const createStage = () =>
   Array.from(Array(STAGE_HEIGHT), () => Array(STAGE_WIDTH).fill([0, 'clear']))

@@ -35,7 +35,7 @@ export const useBlock = () => {
 
 export const usePlayer = () => {
   const [player, setPlayer] = useState({
-    pos: { x: 5, y: 10 },
+    pos: { x: 4, y: 9 },
     tetromino: getPlayer(),
     collided: false,
   })

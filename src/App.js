@@ -20,14 +20,14 @@ const App = () => {
 
   const achievements = Cookies
 
-  const [permissionDialogue, setPermissionDialogue] = useState(false)
+  const [permissionDialogue, setPermissionDialogue] = useState(true)
   const [warning, setWarnign] = useState(false)
   const [canvas, setCanvas] = useState(false)
   const [mainscreen, setMainscreen] = useState(false)
   const [credits, setCredits] = useState(false)
   const [chapel, setChapel] = useState(false)
   const [achievementList, setAchievementList] = useState(false)
-  const [chapelRevisited, setChapelRevisited] = useState(true)
+  const [chapelRevisited, setChapelRevisited] = useState(false)
 
   const [cookiePermission, setCookiePermission] = useState(false)
   const [startEnabled, setStartEnabled] = useState(false)
