@@ -103,7 +103,7 @@ const Canvas = ({ baseurl, i, setCanvas, sCount, setSCount, setEnd, achievements
                                 if (choices[2] === 'Remain silent') {
                                     setSCount(sCount + 1)
                                 }
-                                if (path === '' && achievementService.hasAchievement(achievements, 'Tale of Creation')) {
+                                if (path === '' && achievementService.hasAchievement(achievements, 'T')) {
                                     handleFirstChoice('center')
                                     return
                                 } else if (path === '') {

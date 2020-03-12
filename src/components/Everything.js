@@ -22,7 +22,7 @@ const Everything = ({ achievements, setCredits, setEnd, cookiePermission }) => {
                 {
                     showButton === true &&
                     <Button type='Achievement-button' text='Credits' handleClick={() => {
-                       achievementService.completeAchievement(cookiePermission, achievements, 'Everything')
+                       achievementService.completeAchievement(cookiePermission, achievements, 'Everything', 'E')
                         setCredits(true)
                         setEnd('')
                     }} />

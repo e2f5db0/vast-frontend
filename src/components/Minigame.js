@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import ReactAudioPlayer from 'react-audio-player'
 import { createStage, checkCollision, checkBoundaries } from '../gameHelpers'
 import { StyledGridWrapper, StyledGrid } from './styles/StyledGrid'

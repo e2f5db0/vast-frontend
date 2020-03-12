@@ -16,15 +16,15 @@ const End = ({ setMainScreen, setStartEnabled, setEnd, setChapelRevisited }) => 
         <div className='App'>
             <div className='Body'>
                 <img className='Header' src={solid} alt='grey solid' />
-                <img className='End-gif' src={end} alt='Dark creature sitting in a dark twitching room afraid.' />
-                <br></br>
-                {
-                    showButton &&
-                    <div className='App-header'>
-                        <p>More death:</p>
-                        <a className='Link' href='http://www.orderofthegooddeath.com/' >The Order of a Good Death</a>
-                        <br></br>
-                        <div className='Centered'>
+                <div className='Centered'>
+                    <img className='End-gif' src={end} alt='Dark creature sitting in a dark twitching room afraid.' />
+                    <br></br>
+                    {
+                        showButton &&
+                        <div className='App-header'>
+                            <p>More death:</p>
+                            <a className='Link' href='http://www.orderofthegooddeath.com/' >The Order of a Good Death</a>
+                            <br></br>
                             <button className='Main-button' onClick={() => {
                                 setStartEnabled(false)
                                 setMainScreen(true)
@@ -37,8 +37,8 @@ const End = ({ setMainScreen, setStartEnabled, setEnd, setChapelRevisited }) => 
                             }} >Chapel (Revisited)
                             </button>
                         </div>
-                    </div>
-                }
+                    }
+                </div>
             </div>
         </div>
     )

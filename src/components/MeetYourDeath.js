@@ -22,11 +22,11 @@ const MeetYourDeath = ({ setStartEnabled, setEnd, setMainscreen, sCount, achieve
                 {
                     showButton === true &&
                     <Button type='Achievement-button' text='To Vast' handleClick={() => {
-                        if (!achievementService.find(achievements, 'Onlooker') && sCount >= 9) {
-                            achievementService.completeAchievement(cookiePermission, achievements, 'Meet Your Death')
+                        if (!achievementService.hasAchievement(achievements, 'O') && sCount >= 9) {
+                            achievementService.completeAchievement(cookiePermission, achievements, 'Meet Your Death', 'M')
                             setEnd('onlooker')
                         } else {
-                            achievementService.completeAchievement(cookiePermission, achievements, 'Meet Your Death')
+                            achievementService.completeAchievement(cookiePermission, achievements, 'Meet Your Death', 'M')
                             if (achievementService.allAchievements(achievements) === true) {
                                 setEnd('everything')
                             } else {

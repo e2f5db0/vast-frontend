@@ -1,13 +1,13 @@
 
-const completeAchievement = (cookiePermission, achievements, achievement) => {
-    if (cookiePermission === true && find(achievements, achievement) === false) {
+const completeAchievement = (cookiePermission, achievements, achievement, tag) => {
+    if (cookiePermission === true && hasAchievement(achievements, achievement) === false) {
         const aCount = achievements.get('aCount')
         if (aCount) {
-            achievements.set(String(aCount), achievement)
+            achievements.set(tag, achievement)
             achievements.set('aCount', Number(aCount) + 1)
         } else {
             achievements.set('aCount', 0)
-            completeAchievement(cookiePermission, achievements, achievement)
+            completeAchievement(cookiePermission, achievements, achievement, tag)
         }
     }
 }
@@ -40,9 +40,10 @@ const getDescription = (achievement) => {
 
 const toList = (achievements) => {
     let aList = []
+    const tags = 'MORTE'
     let i = 0
-    while (i < 5) {
-        let achievement = achievements.get(String(i))
+    while (i < tags.length) {
+        let achievement = achievements.get(tags[i])
         if (achievement) {
             aList.push(achievement)
         }
@@ -52,42 +53,22 @@ const toList = (achievements) => {
 }
 
 const hasAchievements = (achievements) => {
-    let i = 0
-    while (i < 5) {
-        let achievement = achievements.get(String(i))
-        if (achievement) {
-            return true
-        }
-        i = i + 1
+    // if aCount exists, at least one achievement is completed
+    if (achievements.get('aCount') !== undefined) {
+        return true
     }
     return false
 }
 
-const hasAchievement = (achievements, achievement) => {
-    let i = 0
-    while (i < 5) {
-        let a = achievements.get(String(i))
-        if (a === achievement) {
-            return true
-        }
-        i = i + 1
-    }
-    return false
-}
-
-const find = (achievements, string) => {
-    let i = 0
-    while (i < 5) {
-        let achievement = achievements.get(String(i))
-        if (achievement === string) {
-            return true
-        }
-        i = i + 1
+const hasAchievement = (achievements, tag) => {
+    const hit = achievements.get(tag)
+    if (hit) {
+        return true
     }
     return false
 }
 
 export default {
     allAchievements, getDescription, toList, hasAchievements,
-    hasAchievement, find, completeAchievement
+    hasAchievement, completeAchievement
 }
