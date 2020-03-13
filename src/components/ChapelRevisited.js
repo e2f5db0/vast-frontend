@@ -6,6 +6,7 @@ import god_beaten from '../resources/god-beaten.png'
 import sound from '../resources/shame.wav'
 import music from '../resources/chapel-revisited.wav'
 import devil from '../resources/pray-for-the-devil.wav'
+import cross from '../resources/white-cross.png'
 
 const ChapelRevisited = ({ setChapelRevisited, setMainScreen }) => {
 
@@ -26,6 +27,8 @@ const ChapelRevisited = ({ setChapelRevisited, setMainScreen }) => {
                 }
                 <div>
                     <div>
+                        <img src={cross} className='Cross' alt='A White Cross' />
+                        <br></br>
                         <img src={god_beaten} className='God' alt='God is beaten' />
                         <p>Here lies God. He lies no more.</p>
                     </div>
