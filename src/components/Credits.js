@@ -2,6 +2,7 @@ import React from 'react'
 import ReactAudioPlayer from 'react-audio-player'
 import sound from '../resources/credits.wav'
 import vast from '../resources/vast-logo.jpg'
+import gap from '../background.png'
 
 const Credits = ({ setCredits, setEnd }) => {
 
@@ -31,11 +32,12 @@ const Credits = ({ setCredits, setEnd }) => {
                         <h3>Audio</h3>
                         <p>Death - IBM Watson KateV3</p>
                         <p>God - The Holy Bible (KJV Dramatized Audio book) </p>
+                        <img src={gap} alt='gap' />
                         <p>"The Good Book" - Tim Minchin</p>
                         <p>"Routine" - Bambu</p>
-                        <p>"The sound of silence" - Pentatonix</p>
+                        <p>"The Sound of Silence" - Pentatonix</p>
                         <p>"Deal With The Devil" - Dope D.O.D.</p>
-                        <p>"Demons are a girl's best friend" - Powerwolf</p>
+                        <p>"Demons Are a Girl's Best Friend" - Powerwolf</p>
                         <p>"Black Heart" - BrunuhVille</p>
                         <p>"Shame" - Game of Thrones</p>
                         <p>"Take Me to Church" - Hozier</p>
