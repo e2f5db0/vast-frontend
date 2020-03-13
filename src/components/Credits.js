@@ -37,7 +37,7 @@ const Credits = ({ setCredits, setEnd }) => {
                         <p>"Routine" - Bambu</p>
                         <p>"The Sound of Silence" - Pentatonix</p>
                         <p>"Deal With The Devil" - Dope D.O.D.</p>
-                        <p>"Demons Are a Girl's Best Friend" - Powerwolf</p>
+                        <p>"Corrupted Monk" - Yuka Kitamura (Sekiro OST)</p>
                         <p>"Black Heart" - BrunuhVille</p>
                         <p>"Shame" - Game of Thrones</p>
                         <p>"Take Me to Church" - Hozier</p>

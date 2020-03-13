@@ -21,6 +21,7 @@ const App = () => {
 
   const achievements = Cookies
 
+  // views
   const [permissionDialogue, setPermissionDialogue] = useState(true)
   const [warning, setWarnign] = useState(false)
   const [canvas, setCanvas] = useState(false)
@@ -30,11 +31,11 @@ const App = () => {
   const [achievementList, setAchievementList] = useState(false)
   const [miniGame, setMiniGame] = useState(false)
   const [chapelRevisited, setChapelRevisited] = useState(false)
-
-  const [cookiePermission, setCookiePermission] = useState(false)
-  const [startEnabled, setStartEnabled] = useState(false)
   const [end, setEnd] = useState('')
 
+  // parameters
+  const [cookiePermission, setCookiePermission] = useState(false)
+  const [startEnabled, setStartEnabled] = useState(false)
   const [sCount, setSCount] = useState(0)
 
   const baseurl = 'https://vast-backend.herokuapp.com/'
@@ -54,8 +55,8 @@ const App = () => {
 
   if (canvas === true) {
     return (
-      <Canvas baseurl={baseurl} i={1} setCanvas={setCanvas} sCount={sCount} setSCount={setSCount}
-        setEnd={setEnd} achievements={achievements} />
+      <Canvas baseurl={baseurl} i={1} setMainScreen={setMainscreen} setCanvas={setCanvas} sCount={sCount}
+        setSCount={setSCount} setEnd={setEnd} achievements={achievements} setMainScreen={setMainscreen} />
     )
   }
 
@@ -139,8 +140,7 @@ const App = () => {
 
   if (end === 'end') {
     return (
-      <End setMainScreen={setMainscreen} setStartEnabled={setStartEnabled} setEnd={setEnd}
-        setChapelRevisited={setChapelRevisited} />
+      <End setEnd={setEnd} setMinigame={setMiniGame} />
     )
   }
 }
