@@ -8,7 +8,7 @@ import music from '../resources/chapel-revisited.wav'
 import devil from '../resources/pray-for-the-devil.wav'
 import cross from '../resources/white-cross.png'
 
-const ChapelRevisited = ({ setChapelRevisited, setMainScreen }) => {
+const ChapelRevisited = ({ setChapelRevisited, setMainScreen, setStartEnabled }) => {
 
     const [shame, setShame] = useState(false)
     const [showButtons, setShowButtons] = useState(true)
@@ -44,6 +44,7 @@ const ChapelRevisited = ({ setChapelRevisited, setMainScreen }) => {
                                 <Button type='Main-button' text='To Vast' handleClick={() => {
                                     new Audio(devil).play()
                                     setMainScreen(true)
+                                    setStartEnabled(true)
                                     setChapelRevisited(false)
                                 }} />
                             </div>

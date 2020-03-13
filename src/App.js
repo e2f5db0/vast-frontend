@@ -77,7 +77,8 @@ const App = () => {
 
   if (chapelRevisited === true) {
     return (
-      <ChapelRevisited setChapelRevisited={setChapelRevisited} setMainScreen={setMainscreen} />
+      <ChapelRevisited setChapelRevisited={setChapelRevisited} setMainScreen={setMainscreen}
+        setStartEnabled={setStartEnabled} />
     )
   }
 

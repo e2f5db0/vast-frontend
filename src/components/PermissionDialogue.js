@@ -10,12 +10,12 @@ const PermissionDialogue = ({ setWarning, setPermissionDialogue, setCookiePermis
                 <div className='Dialogue'>
                     <h2>Cookie Policy</h2>
                     <p>This game uses cookies to save completed achievements.</p>
-                    <Button type='Main-button' text='Accept' handleClick={() => {
+                    <Button type='Choice-button' text='Accept' handleClick={() => {
                         setCookiePermission(true)
                         setPermissionDialogue(false)
                         setWarning(true)
                     }} />
-                    <Button type='Main-button' text='Reject' handleClick={() => {
+                    <Button type='Choice-button' text='Reject' handleClick={() => {
                         setCookiePermission(false)
                         setPermissionDialogue(false)
                         setWarning(true)
