@@ -6,7 +6,7 @@ import gif from '../resources/meet-your-death.gif'
 import sound from '../resources/meet-your-death.wav'
 import achievementService from '../services/achievementService'
 
-const MeetYourDeath = ({ setStartEnabled, setEnd, setMainscreen, sCount, achievements, cookiePermission }) => {
+const MeetYourDeath = ({ setStartEnabled, setEnd, setMainscreen, sCount, achievements, cookiePermission, cache, setCache }) => {
 
     const [showButton, setShowButton] = useState(false)
 
@@ -22,12 +22,12 @@ const MeetYourDeath = ({ setStartEnabled, setEnd, setMainscreen, sCount, achieve
                 {
                     showButton === true &&
                     <Button type='Achievement-button' text='To Vast' handleClick={() => {
-                        if (!achievementService.hasAchievement(achievements, 'O') && sCount >= 9) {
-                            achievementService.completeAchievement(cookiePermission, achievements, 'Meet Your Death', 'M')
+                        if (!achievementService.hasAchievement(achievements, cache, 'O') && sCount >= 9) {
+                            achievementService.completeAchievement(cookiePermission, cache, setCache, achievements, 'Meet Your Death', 'M')
                             setEnd('onlooker')
                         } else {
-                            achievementService.completeAchievement(cookiePermission, achievements, 'Meet Your Death', 'M')
-                            if (achievementService.allAchievements(achievements) === true) {
+                            achievementService.completeAchievement(cookiePermission, cache, setCache, achievements, 'Meet Your Death', 'M')
+                            if (achievementService.allAchievements(achievements, cache) === true) {
                                 setEnd('everything')
                             } else {
                                 setStartEnabled(true)

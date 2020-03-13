@@ -6,7 +6,7 @@ import gif from '../resources/rotten-religion.gif'
 import sound from '../resources/rotten-religion.wav'
 import achievementService from '../services/achievementService'
 
-const RottenReligion = ({ setStartEnabled, setEnd, setMainscreen, sCount, achievements, cookiePermission }) => {
+const RottenReligion = ({ setStartEnabled, setEnd, setMainscreen, sCount, achievements, cookiePermission, cache, setCache }) => {
 
     const [showButton, setShowButton] = useState(false)
 
@@ -22,12 +22,12 @@ const RottenReligion = ({ setStartEnabled, setEnd, setMainscreen, sCount, achiev
                 {
                     showButton === true &&
                     <Button type='Achievement-button' text='To Vast' handleClick={() => {
-                        if (!achievementService.hasAchievement(achievements, 'O') && sCount >= 9) {
-                            achievementService.completeAchievement(cookiePermission, achievements, 'Rotten Religion', 'R')
+                        if (!achievementService.hasAchievement(achievements, cache, 'O') && sCount >= 9) {
+                            achievementService.completeAchievement(cookiePermission, cache, setCache, achievements, 'Rotten Religion', 'R')
                             setEnd('onlooker')
                         } else {
-                            achievementService.completeAchievement(cookiePermission, achievements, 'Rotten Religion', 'R')
-                            if (achievementService.allAchievements(achievements) === true) {
+                            achievementService.completeAchievement(cookiePermission, cache, setCache, achievements, 'Rotten Religion', 'R')
+                            if (achievementService.allAchievements(achievements, cache) === true) {
                                 setEnd('everything')
                             } else {
                                 setStartEnabled(true)

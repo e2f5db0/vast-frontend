@@ -4,10 +4,13 @@ import trophy from '../resources/trophy.png'
 import Achievement from './Achievement'
 import achievementService from '../services/achievementService'
 
-const AchievementList = ({ setAchievementList, setMainscreen, setStartEnabled, achievements }) => {
+const AchievementList = ({ setAchievementList, setMainscreen, setStartEnabled, achievements, cache }) => {
 
-    const achievementList = achievementService.toList(achievements)
-    const count = achievements.get('aCount')
+    const achievementList = achievementService.toList(achievements, cache)
+    let count = achievements.get('aCount')
+    if (!count) {
+        count = cache.length
+    }
 
     if (achievementList.length > 0) {
         return (

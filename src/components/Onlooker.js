@@ -6,7 +6,7 @@ import gif from '../resources/onlooker.gif'
 import sound from '../resources/onlooker.wav'
 import achievementService from '../services/achievementService'
 
-const Onlooker = ({ setStartEnabled, setEnd, setMainscreen, achievements, cookiePermission }) => {
+const Onlooker = ({ setStartEnabled, setEnd, setMainscreen, achievements, cookiePermission, cache, setCache }) => {
 
     const [showButton, setShowButton] = useState(false)
 
@@ -22,9 +22,9 @@ const Onlooker = ({ setStartEnabled, setEnd, setMainscreen, achievements, cookie
                 {
                     showButton === true &&
                     <Button type='Achievement-button' text='To Vast' handleClick={() => {
-                        achievementService.completeAchievement(cookiePermission, achievements, 'Onlooker', 'O')
+                        achievementService.completeAchievement(cookiePermission, cache, setCache, achievements, 'Onlooker', 'O')
                         // check if all achievements are completed
-                        if (achievementService.allAchievements(achievements) === true) {
+                        if (achievementService.allAchievements(achievements, cache) === true) {
                             setEnd('everything')
                         } else {
                             setStartEnabled(true)

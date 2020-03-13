@@ -9,7 +9,7 @@ import lineService from '../services/lineService'
 import achievementService from '../services/achievementService'
 import space from '../background.png'
 
-const Canvas = ({ baseurl, i, setMainScreen, setCanvas, sCount, setSCount, setEnd, achievements }) => {
+const Canvas = ({ baseurl, i, setMainScreen, setCanvas, sCount, setSCount, setEnd, achievements, cache }) => {
 
     const [line, setLine] = useState('That was rather unpleasant to watch. Do you believe that poor little creature will fall in the end?')
     const [choices, setChoices] = useState(['I hope so.', 'No.', 'Remain silent'])
@@ -45,7 +45,7 @@ const Canvas = ({ baseurl, i, setMainScreen, setCanvas, sCount, setSCount, setEn
 
     const renderAchievement = (ending, delay, tag) => {
         setTimeout(() => {
-            if (!achievementService.hasAchievement(achievements, tag)) {
+            if (!achievementService.hasAchievement(achievements, cache, tag)) {
                 setEnd(ending)
                 setCanvas(false)
             } else {
@@ -66,7 +66,7 @@ const Canvas = ({ baseurl, i, setMainScreen, setCanvas, sCount, setSCount, setEn
     }
 
     // if the game is completed
-    if (achievementService.hasAchievement(achievements, 'E')) {
+    if (achievementService.hasAchievement(achievements, cache, 'E')) {
         return (
             <div className='App'>
                 <div className='Canvas'>
@@ -129,11 +129,11 @@ const Canvas = ({ baseurl, i, setMainScreen, setCanvas, sCount, setSCount, setEn
                                     nextLine(path)
                                 }} />
                                 <Button type='Choice-button' text={choices[1]} handleClick={() => {
-                                    if (path === '' && achievementService.hasAchievements(achievements) === true) {
+                                    if (path === '' && achievementService.hasAchievements(achievements, cache) === true) {
                                         handleFirstChoice('center')
                                         return
                                         // choosing the center path first is disallowed
-                                    } else if (path === '' && achievementService.hasAchievements(achievements) === false) {
+                                    } else if (path === '' && achievementService.hasAchievements(achievements, cache) === false) {
                                         handleFirstChoice('right')
                                     }
                                     nextLine(path)
@@ -142,7 +142,7 @@ const Canvas = ({ baseurl, i, setMainScreen, setCanvas, sCount, setSCount, setEn
                                     if (choices[2] === 'Remain silent') {
                                         setSCount(sCount + 1)
                                     }
-                                    if (path === '' && achievementService.hasAchievement(achievements, 'T')) {
+                                    if (path === '' && achievementService.hasAchievement(achievements, cache, 'T')) {
                                         handleFirstChoice('center')
                                         return
                                     } else if (path === '') {

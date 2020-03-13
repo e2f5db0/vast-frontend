@@ -35,6 +35,7 @@ const App = () => {
 
   // parameters
   const [cookiePermission, setCookiePermission] = useState(false)
+  const [achievementCache, setAchievementCache] = useState([])
   const [startEnabled, setStartEnabled] = useState(false)
   const [sCount, setSCount] = useState(0)
 
@@ -55,8 +56,8 @@ const App = () => {
 
   if (canvas === true) {
     return (
-      <Canvas baseurl={baseurl} i={1} setMainScreen={setMainscreen} setCanvas={setCanvas} sCount={sCount}
-        setSCount={setSCount} setEnd={setEnd} achievements={achievements} setMainScreen={setMainscreen} />
+      <Canvas baseurl={baseurl} i={24} setMainScreen={setMainscreen} setCanvas={setCanvas} sCount={sCount}
+        setSCount={setSCount} setEnd={setEnd} achievements={achievements} cache={achievementCache} />
     )
   }
 
@@ -64,7 +65,7 @@ const App = () => {
     return (
       <MainScreen startEnabled={startEnabled} setAchievementList={setAchievementList}
         achievements={achievements} setMainscreen={setMainscreen} setCanvas={setCanvas}
-        setChapel={setChapel} setChapelRevisited={setChapelRevisited} />
+        setChapel={setChapel} setChapelRevisited={setChapelRevisited} cache={achievementCache} />
     )
   }
 
@@ -91,7 +92,7 @@ const App = () => {
   if (achievementList === true) {
     return (
       <AchievementList setAchievementList={setAchievementList} achievements={achievements}
-        setMainscreen={setMainscreen} setStartEnabled={setStartEnabled} />
+        setMainscreen={setMainscreen} setStartEnabled={setStartEnabled} cache={achievementCache} />
     )
   }
 
@@ -107,35 +108,39 @@ const App = () => {
   if (end === 'meet_your_death') {
     return (
       <MeetYourDeath setStartEnabled={setStartEnabled} setEnd={setEnd} sCount={sCount}
-        setMainscreen={setMainscreen} achievements={achievements} cookiePermission={cookiePermission} />
+        setMainscreen={setMainscreen} achievements={achievements} cookiePermission={cookiePermission}
+        cache={achievementCache} setCache={setAchievementCache} />
     )
   }
 
   if (end === 'onlooker') {
     return (
       <Onlooker setStartEnabled={setStartEnabled} setEnd={setEnd} setMainscreen={setMainscreen}
-        achievements={achievements} cookiePermission={cookiePermission} />
+        achievements={achievements} cookiePermission={cookiePermission} cache={achievementCache}
+        setCache={setAchievementCache} />
     )
   }
 
   if (end === 'rotten_religion') {
     return (
       <RottenReligion setStartEnabled={setStartEnabled} setEnd={setEnd} sCount={sCount}
-        setMainscreen={setMainscreen} achievements={achievements} cookiePermission={cookiePermission} />
+        setMainscreen={setMainscreen} achievements={achievements} cookiePermission={cookiePermission}
+        cache={achievementCache} setCache={setAchievementCache} />
     )
   }
 
   if (end === 'tale_of_creation') {
     return (
       <TaleOfCreation setStartEnabled={setStartEnabled} setEnd={setEnd} sCount={sCount}
-        setMainscreen={setMainscreen} achievements={achievements} cookiePermission={cookiePermission} />
+        setMainscreen={setMainscreen} achievements={achievements} cookiePermission={cookiePermission}
+        cache={achievementCache} setCache={setAchievementCache} />
     )
   }
 
   if (end === 'everything') {
     return (
       <Everything achievements={achievements} setCredits={setCredits} setEnd={setEnd}
-        cookiePermission={cookiePermission} />
+        cookiePermission={cookiePermission} cache={achievementCache} setCache={setAchievementCache} />
     )
   }
 

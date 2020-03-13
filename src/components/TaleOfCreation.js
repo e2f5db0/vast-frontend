@@ -6,7 +6,7 @@ import gif from '../resources/tale-of-creation.gif'
 import sound from '../resources/tale-of-creation.wav'
 import achievementService from '../services/achievementService'
 
-const TaleOfCreation = ({ setStartEnabled, setEnd, setMainscreen, sCount, achievements, cookiePermission }) => {
+const TaleOfCreation = ({ setStartEnabled, setEnd, setMainscreen, sCount, achievements, cookiePermission, cache, setCache }) => {
 
     const [showButton, setShowButton] = useState(false)
 
@@ -22,12 +22,12 @@ const TaleOfCreation = ({ setStartEnabled, setEnd, setMainscreen, sCount, achiev
                 {
                     showButton === true &&
                     <Button type='Achievement-button' text='To Vast' handleClick={() => {
-                        if (!achievementService.hasAchievement(achievements, 'O') && sCount >= 9) {
-                           achievementService.completeAchievement(cookiePermission, achievements, 'Tale of Creation', 'T')
+                        if (!achievementService.hasAchievement(achievements, cache, 'O') && sCount >= 9) {
+                           achievementService.completeAchievement(cookiePermission, cache, setCache, achievements, 'Tale of Creation', 'T')
                             setEnd('onlooker')
                         } else {
-                            achievementService.completeAchievement(cookiePermission, achievements, 'Tale of Creation', 'T')
-                            if (achievementService.allAchievements(achievements) === true) {
+                            achievementService.completeAchievement(cookiePermission, cache, setCache, achievements, 'Tale of Creation', 'T')
+                            if (achievementService.allAchievements(achievements, cache) === true) {
                                 setEnd('everything')
                             } else {
                                 setStartEnabled(true)
