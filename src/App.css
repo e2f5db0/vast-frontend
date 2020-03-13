@@ -190,7 +190,7 @@ small {
     margin-top: 100vh;
   }
   to {
-    margin-top: -240vh;
+    margin-top: -255vh;
   }
 }
 
@@ -204,4 +204,9 @@ small {
 
 .Centered {
   margin: 0 auto;
+}
+
+.Cross {
+  max-height: 50px;
+  margin-bottom: 3%;
 }

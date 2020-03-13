@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import Button from '../components/Button'
 import end from '../resources/end.gif'
 import solid from '../background.png'
 
-const End = ({ setMainScreen, setStartEnabled, setEnd, setChapelRevisited }) => {
+const End = ({ setEnd, setMinigame }) => {
 
     const [showButton, setShowButton] = useState(false)
 
@@ -25,17 +26,12 @@ const End = ({ setMainScreen, setStartEnabled, setEnd, setChapelRevisited }) => 
                             <p>More death:</p>
                             <a className='Link' href='http://www.orderofthegooddeath.com/' >The Order of a Good Death</a>
                             <br></br>
-                            <button className='Main-button' onClick={() => {
-                                setStartEnabled(false)
-                                setMainScreen(true)
-                                setEnd('')
-                            }} >Back to Vast
-                            </button>
-                            <button className='Main-button' onClick={() => {
-                                setEnd('')
-                                setChapelRevisited(true)
-                            }} >Chapel (Revisited)
-                            </button>
+                            <div className='Centered'>
+                                <Button type='Choice-button' text='Chapel (Revisited)' handleClick={() => {
+                                    setEnd('')
+                                    setMinigame(true)
+                                }} />
+                            </div>
                         </div>
                     }
                 </div>
