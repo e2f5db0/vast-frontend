@@ -56,7 +56,7 @@ const App = () => {
 
   if (canvas === true) {
     return (
-      <Canvas baseurl={baseurl} i={24} setMainScreen={setMainscreen} setCanvas={setCanvas} sCount={sCount}
+      <Canvas baseurl={baseurl} i={1} setMainScreen={setMainscreen} setCanvas={setCanvas} sCount={sCount}
         setSCount={setSCount} setEnd={setEnd} achievements={achievements} cache={achievementCache} />
     )
   }
