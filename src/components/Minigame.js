@@ -21,6 +21,8 @@ import death1 from '../resources/minigame-death1.wav'
 import death2 from '../resources/minigame-death2.wav'
 import fatality from '../resources/minigame-fatality.wav'
 import goodbye from '../resources/minigame-end.wav'
+import arrow_right from '../resources/arrow-right.png'
+import arrow_left from '../resources/arrow-left.png'
 
 const Minigame = ({ setMiniGame, setMainScreen, setStartEnabled }) => {
 
@@ -53,7 +55,7 @@ const Minigame = ({ setMiniGame, setMainScreen, setStartEnabled }) => {
   const startGame = () => {
     setMessage('God wants to kill you.')
     setStage(createStage())
-    setDropTime(200)
+    setDropTime(300)
     resetBlock()
     setGameOver(false)
   }
@@ -69,7 +71,7 @@ const Minigame = ({ setMiniGame, setMainScreen, setStartEnabled }) => {
         setMessage('You are dead.')
         setDropTime(null)
       } else if (status === 'beaten') {
-        setMessage('He is finished! We are finally free!')
+        setMessage('Fatality!')
       } else {
         updateBlockPos({ x: 0, y: 0, collided: true })
       }
@@ -78,8 +80,8 @@ const Minigame = ({ setMiniGame, setMainScreen, setStartEnabled }) => {
 
   useInterval(() => {
     drop()
-    if (dropTime > 50) {
-      setDropTime(dropTime - 0.4)
+    if (dropTime > 100) {
+      setDropTime(dropTime - 1)
     }
   }, dropTime)
 
@@ -209,13 +211,15 @@ const Minigame = ({ setMiniGame, setMainScreen, setStartEnabled }) => {
           }
         </div>
         <div>
-          <div>
+          <div className='Minigame-container'>
             <StyledGridWrapper>
               <StyledGrid>
                 <Stage stage={stage} />
               </StyledGrid>
             </StyledGridWrapper>
             <div>
+              <img className='Arrow' src={arrow_left} alt='Arrow left' onClick={() => moveHorizontally(-1)} />
+              <img className='Arrow' src={arrow_right} alt='Arrow right' onClick={() => moveHorizontally(1)} />
               <p>{message}</p>
             </div>
           </div>

@@ -210,3 +210,11 @@ small {
   max-height: 50px;
   margin-bottom: 3%;
 }
+
+.Minigame-container {
+  max-width: 100vw;
+}
+
+.Arrow {
+  height: 7vh;
+}
