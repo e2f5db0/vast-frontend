@@ -5,14 +5,17 @@ import Achievement from './Achievement'
 import achievementService from '../services/achievementService'
 
 const AchievementList = ({ setAchievementList, setMainscreen, setStartEnabled, achievements }) => {
+
     const achievementList = achievementService.toList(achievements)
+    const count = achievements.get('aCount')
+
     if (achievementList.length > 0) {
         return (
             <div className='App'>
                 <Header moving={true} />
                 <div className='Body'>
                     <div>
-                        <h2>Achievements</h2>
+                        <h2>Achievements  <small>({count}/5)</small></h2>
                         <img className='Trophy' src={trophy} alt='Black trophy' />
                     </div>
                     <div className='AchievementList'>
