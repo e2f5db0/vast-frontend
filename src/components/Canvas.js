@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Typical from 'react-typical'
 import '../App.css'
 import Header from './Header'
 import Line from './Line'
@@ -6,6 +7,7 @@ import Button from './Button'
 import ReactAudioPlayer from 'react-audio-player'
 import lineService from '../services/lineService'
 import achievementService from '../services/achievementService'
+import space from '../background.png'
 
 const Canvas = ({ baseurl, i, setMainScreen, setCanvas, sCount, setSCount, setEnd, achievements }) => {
 
@@ -63,74 +65,106 @@ const Canvas = ({ baseurl, i, setMainScreen, setCanvas, sCount, setSCount, setEn
         }
     }
 
-    return (
-        <div className='App'>
-            <div className='Canvas'>
-                <Header className='Header' moving={false} />
-                {
-                    path === '' &&
-                    <ReactAudioPlayer src={baseurl + 'lines/start.wav'} autoPlay onEnded={() => {
-                        setShowChoices(true)
-                    }} />
-                }
-                {
-                    path !== '' &&
-                    <ReactAudioPlayer src={baseurl + 'lines/' + path + '_path' + String(index - 1) + '.wav'} autoPlay onEnded={() => {
-                        if (lineService.end(path, index, lCount, cCount, rCount) === false) {
-                            setShowChoices(true)
+    // if the game is completed
+    if (achievementService.hasAchievement(achievements, 'E')) {
+        return (
+            <div className='App'>
+                <div className='Canvas'>
+                    <Header moving={false} />
+                    <Typical
+                        steps={
+                            [
+                                'Hello, friend.', 1500,
+                                'Hello, human.', 3000,
+                                'There is nothing for you here anymore.', 6000,
+                                'Scamper off now.', 4000,
+                                'Go on.', 4000,
+                                'Everything that has a beginning', 5000,
+                                'Everything that has a beginning has an end.',
+                            ]
                         }
+                        loop={1}
+                        wrapper="p"
+                    />
+                    <img src={space} alt='empty space' />
+                    <br></br>
+                    <Button type='Main-button' text='To Vast' handleClick={() => {
+                        setMainScreen(true)
+                        setCanvas(false)
                     }} />
-                }
-                <div>
-                    <div>
-                        <Line text={line} />
-                    </div>
-                    {
-                        showChoices === true &&
-                        <div>
-                            <Button type='Choice-button' text={choices[0]} handleClick={() => {
-                                if (path === '') {
-                                    handleFirstChoice('left')
-                                    return
-                                }
-                                nextLine(path)
-                            }} />
-                            <Button type='Choice-button' text={choices[1]} handleClick={() => {
-                                if (path === '' && achievementService.hasAchievements(achievements) === true) {
-                                    handleFirstChoice('center')
-                                    return
-                                    // choosing the center path first is disallowed
-                                } else if (path === '' && achievementService.hasAchievements(achievements) === false) {
-                                    handleFirstChoice('right')
-                                }
-                                nextLine(path)
-                            }} />
-                            <Button type='Choice-button' text={choices[2]} handleClick={() => {
-                                if (choices[2] === 'Remain silent') {
-                                    setSCount(sCount + 1)
-                                }
-                                if (path === '' && achievementService.hasAchievement(achievements, 'T')) {
-                                    handleFirstChoice('center')
-                                    return
-                                } else if (path === '') {
-                                    handleFirstChoice('right')
-                                    return
-                                }
-                                nextLine(path)
-                            }} />
-                        </div>
-                    }
-                    {
-                        toVast && 
-                        <Button type='Main-button' text='To Vast' handleClick={() => {
-                            setMainScreen(true)
-                            setCanvas(false)
-                        }} />
-                    }
                 </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+        return (
+            <div className='App'>
+                <div className='Canvas'>
+                    <Header className='Header' moving={false} />
+                    {
+                        path === '' &&
+                        <ReactAudioPlayer src={baseurl + 'lines/start.wav'} autoPlay onEnded={() => {
+                            setShowChoices(true)
+                        }} />
+                    }
+                    {
+                        path !== '' &&
+                        <ReactAudioPlayer src={baseurl + 'lines/' + path + '_path' + String(index - 1) + '.wav'} autoPlay onEnded={() => {
+                            if (lineService.end(path, index, lCount, cCount, rCount) === false) {
+                                setShowChoices(true)
+                            }
+                        }} />
+                    }
+                    <div>
+                        <div>
+                            <Line text={line} />
+                        </div>
+                        {
+                            showChoices === true &&
+                            <div>
+                                <Button type='Choice-button' text={choices[0]} handleClick={() => {
+                                    if (path === '') {
+                                        handleFirstChoice('left')
+                                        return
+                                    }
+                                    nextLine(path)
+                                }} />
+                                <Button type='Choice-button' text={choices[1]} handleClick={() => {
+                                    if (path === '' && achievementService.hasAchievements(achievements) === true) {
+                                        handleFirstChoice('center')
+                                        return
+                                        // choosing the center path first is disallowed
+                                    } else if (path === '' && achievementService.hasAchievements(achievements) === false) {
+                                        handleFirstChoice('right')
+                                    }
+                                    nextLine(path)
+                                }} />
+                                <Button type='Choice-button' text={choices[2]} handleClick={() => {
+                                    if (choices[2] === 'Remain silent') {
+                                        setSCount(sCount + 1)
+                                    }
+                                    if (path === '' && achievementService.hasAchievement(achievements, 'T')) {
+                                        handleFirstChoice('center')
+                                        return
+                                    } else if (path === '') {
+                                        handleFirstChoice('right')
+                                        return
+                                    }
+                                    nextLine(path)
+                                }} />
+                            </div>
+                        }
+                        {
+                            toVast &&
+                            <Button type='Main-button' text='To Vast' handleClick={() => {
+                                setMainScreen(true)
+                                setCanvas(false)
+                            }} />
+                        }
+                    </div>
+                </div>
+            </div>
+        )
+    }
 }
 
 export default Canvas
