@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import ReactAudioPlayer from 'react-audio-player'
 import Header from '../components/Header'
 import Button from '../components/Button'
 import vast from '../resources/vast.gif'
-import intro from '../resources/intro.wav'
+import sound from '../resources/intro.wav'
 import achievementService from '../services/achievementService'
 
 const MainScreen = ({ startEnabled, setMainscreen, setCanvas, setAchievementList, setChapel, setChapelRevisited, achievements }) => {
@@ -11,8 +12,7 @@ const MainScreen = ({ startEnabled, setMainscreen, setCanvas, setAchievementList
     const [message, setMessage] = useState('')
     const [volumeClicks, setVolumeClicks] = useState(0)
     const [startButton, setStartButton] = useState(startEnabled)
-
-    const intro_song = new Audio(intro)
+    const [playIntro, setPlayIntro] = useState(false)
 
     return (
         <div className='App'>
@@ -24,17 +24,20 @@ const MainScreen = ({ startEnabled, setMainscreen, setCanvas, setAchievementList
                     setCanvas(true)
                     setMainscreen(false)
                 }} />}
+                {
+                    playIntro &&
+                    <ReactAudioPlayer src={sound} autoPlay onEnded={() => {
+                        setStartButton(true)
+                    }} />
+                }
                 <div className='Main-sound'>
                     {!startButton && <p>Sound:</p>}
                     <br></br>
                     {!startButton && <Button type='Main-button' text={volume} handleClick={() => {
-                        setTimeout(() => {
-                            setStartButton(true)
-                        }, 10000)
                         setVolumeClicks(volumeClicks + 1)
                         if (volume === 'on') {
                             setVolume('off')
-                            intro_song.play()
+                            setPlayIntro(true)
                             setMessage('Now you can never turn it off.')
                         }
                         if (volumeClicks >= 2 && volumeClicks < 15) {
