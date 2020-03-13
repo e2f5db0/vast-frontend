@@ -7,7 +7,7 @@ import ReactAudioPlayer from 'react-audio-player'
 import lineService from '../services/lineService'
 import achievementService from '../services/achievementService'
 
-const Canvas = ({ baseurl, i, setCanvas, sCount, setSCount, setEnd, achievements }) => {
+const Canvas = ({ baseurl, i, setMainScreen, setCanvas, sCount, setSCount, setEnd, achievements }) => {
 
     const [line, setLine] = useState('That was rather unpleasant to watch. Do you believe that poor little creature will fall in the end?')
     const [choices, setChoices] = useState(['I hope so.', 'No.', 'Remain silent'])
@@ -18,6 +18,8 @@ const Canvas = ({ baseurl, i, setCanvas, sCount, setSCount, setEnd, achievements
     const [lCount, setLCount] = useState('')
     const [cCount, setCCount] = useState('')
     const [rCount, setRCount] = useState('')
+
+    const [toVast, setToVast] = useState(false)
 
     useEffect(() => {
         lineService.get_count_left()
@@ -39,21 +41,25 @@ const Canvas = ({ baseurl, i, setCanvas, sCount, setSCount, setEnd, achievements
         lineService.nextLine(path, index, setShowChoices, setLine, setChoices, setIndex)
     }
 
-    const renderAchievement = (ending, delay) => {
+    const renderAchievement = (ending, delay, tag) => {
         setTimeout(() => {
-            setEnd(ending)
-            setCanvas(false)
+            if (!achievementService.hasAchievement(achievements, tag)) {
+                setEnd(ending)
+                setCanvas(false)
+            } else {
+                setToVast(true)
+            }
         }, delay * 1000)
     }
     if (lineService.end(path, index, lCount, cCount, rCount) === true) {
         if (path === 'left') {
-            renderAchievement('rotten_religion', 22)
+            renderAchievement('rotten_religion', 21, 'R')
         }
         if (path === 'center') {
-            renderAchievement('meet_your_death', 4)
+            renderAchievement('meet_your_death', 4, 'M')
         }
         if (path === 'right') {
-            renderAchievement('tale_of_creation', 18)
+            renderAchievement('tale_of_creation', 18, 'T')
         }
     }
 
@@ -62,7 +68,7 @@ const Canvas = ({ baseurl, i, setCanvas, sCount, setSCount, setEnd, achievements
             <div className='Canvas'>
                 <Header className='Header' moving={false} />
                 {
-                    path === '' && 
+                    path === '' &&
                     <ReactAudioPlayer src={baseurl + 'lines/start.wav'} autoPlay onEnded={() => {
                         setShowChoices(true)
                     }} />
@@ -93,8 +99,8 @@ const Canvas = ({ baseurl, i, setCanvas, sCount, setSCount, setEnd, achievements
                                 if (path === '' && achievementService.hasAchievements(achievements) === true) {
                                     handleFirstChoice('center')
                                     return
-                                // choosing the center path first is disallowed
-                                } else if (path === '' && achievementService.hasAchievements(achievements) === false) { 
+                                    // choosing the center path first is disallowed
+                                } else if (path === '' && achievementService.hasAchievements(achievements) === false) {
                                     handleFirstChoice('right')
                                 }
                                 nextLine(path)
@@ -113,6 +119,13 @@ const Canvas = ({ baseurl, i, setCanvas, sCount, setSCount, setEnd, achievements
                                 nextLine(path)
                             }} />
                         </div>
+                    }
+                    {
+                        toVast && 
+                        <Button type='Main-button' text='To Vast' handleClick={() => {
+                            setMainScreen(true)
+                            setCanvas(false)
+                        }} />
                     }
                 </div>
             </div>
