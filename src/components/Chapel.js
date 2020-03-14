@@ -30,8 +30,14 @@ const Chapel = ({ baseurl, setStartEnabled, setMainscreen, setChapel }) => {
                 }} />
                 <div>
                     <div>
-                        {speaking === false && <img src={god} className='God' alt='God' />}
-                        {speaking === true && <img src={god_speaking} className='God' alt='God speaking' />}
+                        {
+                            speaking === false &&
+                            <img src={god} className='God' alt='God' />
+                        }
+                        {
+                            speaking === true &&
+                            <img src={god_speaking} className='God' alt='God speaking' />
+                        }
                     </div>
                     {
                         showPray === true &&
