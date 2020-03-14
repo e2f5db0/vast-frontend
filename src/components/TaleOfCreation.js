@@ -23,7 +23,7 @@ const TaleOfCreation = ({ setStartEnabled, setEnd, setMainscreen, sCount, achiev
                     showButton === true &&
                     <Button type='Achievement-button' text='To Vast' handleClick={() => {
                         if (!achievementService.hasAchievement(achievements, cache, 'O') && sCount >= 9) {
-                           achievementService.completeAchievement(cookiePermission, cache, setCache, achievements, 'Tale of Creation', 'T')
+                            achievementService.completeAchievement(cookiePermission, cache, setCache, achievements, 'Tale of Creation', 'T')
                             setEnd('onlooker')
                         } else {
                             achievementService.completeAchievement(cookiePermission, cache, setCache, achievements, 'Tale of Creation', 'T')

@@ -1,14 +1,14 @@
 
 const completeAchievement = (cookiePermission, cache, setCache, achievements, achievement, tag) => {
     if (cookiePermission === true) {
-        if (!hasAchievement(achievements, achievement, tag)) {
+        if (!hasAchievement(achievements, cache, tag)) {
             const aCount = achievements.get('aCount')
             if (aCount) {
                 achievements.set(tag, achievement)
                 achievements.set('aCount', Number(aCount) + 1)
             } else {
                 achievements.set('aCount', 0)
-                completeAchievement(cookiePermission, achievements, achievement, tag)
+                completeAchievement(cookiePermission, cache, setCache, achievements, achievement, tag)
             }
         }
     } else {
