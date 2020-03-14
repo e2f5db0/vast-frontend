@@ -30,7 +30,8 @@ Time invested in Vast (backend & frontend)
 | 10.03.2020 | 3        | Plan the mechanics for the final minigame & create a react component ChapelRevisited.js (minigame). |
 | 11.03.2020 | 8        | Create Minigame component & merge ChapelRevisited.js into it. Add falling crosses and handle win & game over in the final minigame. |
 | 12.03.2020 | 9        | Finish the final minigame (add player mechanics & storyline). Sort the achievements to spell out MORTE in AchievementList. Create ChapelRevisited.js where lies the aftermath of the final minigame. |
-| 13.03.2020 | 8        | Add pressable arrows to the minigame for moving the player. Polish the minigame. Fix a bug where Achievement is rendered twice. Make sure the player knows when they have truly completed the game (final message in Canvas.js). Refactor all necessary code to make cookies truly optional (the game can be completed 100% without accepting cookies).
+| 13.03.2020 | 8        | Add pressable arrows to the minigame for moving the player. Polish the minigame. Fix a bug where Achievement is rendered twice. Make sure the player knows when they have truly completed the game (final message in Canvas.js). Refactor all necessary code to make cookies truly optional (the game can be completed 100% without accepting cookies). |
+| 14.03.2020 | 4        | Optimize the game for 1920x1080 screen size. Refactor functionality from Minigame.js into minigameService.js. Polish the ending. Play the game accepting/rejecting cookies. Finish the development of Vast. |
 |            |          |            |
-| Total      | 172      |            |
+| Total      | 176      |            |
 |            |          |            |
