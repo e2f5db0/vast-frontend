@@ -8,7 +8,7 @@ import ReactAudioPlayer from 'react-audio-player'
 import lineService from '../services/lineService'
 import achievementService from '../services/achievementService'
 import space from '../background.png'
-import da3mons from '../resources/da3monsneverstop.wav'
+import da3m0ns from '../resources/da3m0nsneverstop.wav'
 
 
 const Canvas = ({ baseurl, i, setMainScreen, setCanvas, sCount, setSCount, setEnd, achievements, cache }) => {
@@ -73,7 +73,7 @@ const Canvas = ({ baseurl, i, setMainScreen, setCanvas, sCount, setSCount, setEn
             <div className='App'>
                 <div className='Canvas'>
                     <Header moving={false} />
-                    <ReactAudioPlayer src={da3mons} autoPlay loop />
+                    <ReactAudioPlayer src={da3m0ns} autoPlay loop />
                     <FinalMessage />
                     <img src={space} alt='empty space' />
                     <br></br>

@@ -42,6 +42,7 @@ const Credits = ({ setCredits, setEnd }) => {
                         <p>"Shame" - Game of Thrones</p>
                         <p>"Take Me to Church" - Hozier</p>
                         <p>"Avenged Sevenfold: God Hates Us" - Synthesia</p>
+                        <p>"1.3_5-da3m0nsneverstop.caf" - Mac Quayle</p>
                         <p>"Kun tää biisi loppuu" - Ruger Hauer</p>
                     </div>
                     <div className='Credits-paragraph'>
