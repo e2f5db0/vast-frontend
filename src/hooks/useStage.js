@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { createStage } from '../gameHelpers'
+import { createStage } from '../services/minigameService'
 
 export const useStage = (block, resetBlock, player) => {
   const [stage, setStage] = useState(createStage())

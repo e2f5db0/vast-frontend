@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
 
 import { TETROMINOS, randomTetromino, getPlayer } from '../tetrominos'
-import { STAGE_WIDTH } from '../gameHelpers'
+import { STAGE_WIDTH } from '../services/minigameService'
 
 export const useBlock = () => {
   const [block, setBlock] = useState({
