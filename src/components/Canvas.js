@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import Typical from 'react-typical'
 import '../App.css'
 import Header from './Header'
 import Line from './Line'
 import Button from './Button'
+import FinalMessage from './FinalMessage'
 import ReactAudioPlayer from 'react-audio-player'
 import lineService from '../services/lineService'
 import achievementService from '../services/achievementService'
 import space from '../background.png'
+import da3mons from '../resources/da3monsneverstop.wav'
+
 
 const Canvas = ({ baseurl, i, setMainScreen, setCanvas, sCount, setSCount, setEnd, achievements, cache }) => {
 
@@ -71,21 +73,8 @@ const Canvas = ({ baseurl, i, setMainScreen, setCanvas, sCount, setSCount, setEn
             <div className='App'>
                 <div className='Canvas'>
                     <Header moving={false} />
-                    <Typical
-                        steps={
-                            [
-                                'Hello, friend.', 1500,
-                                'Hello, human.', 3000,
-                                'There is nothing for you here anymore.', 6000,
-                                'Scamper off now.', 4000,
-                                'Go on.', 4000,
-                                'Everything that has a beginning', 5000,
-                                'Everything that has a beginning has an end.',
-                            ]
-                        }
-                        loop={1}
-                        wrapper="p"
-                    />
+                    <ReactAudioPlayer src={da3mons} autoPlay loop />
+                    <FinalMessage />
                     <img src={space} alt='empty space' />
                     <br></br>
                     <Button type='Main-button' text='To Vast' handleClick={() => {
