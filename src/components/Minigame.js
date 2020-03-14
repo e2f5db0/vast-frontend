@@ -211,22 +211,18 @@ const Minigame = ({ setMiniGame, setMainScreen, setStartEnabled }) => {
           }
         </div>
         <div>
-          <div className='Minigame-container'>
-            <StyledGridWrapper>
-              <StyledGrid>
-                <Stage stage={stage} />
-              </StyledGrid>
-            </StyledGridWrapper>
-            <div>
-              <img className='Arrow' src={arrow_left} alt='Arrow left' onClick={() => moveHorizontally(-1)} />
-              <img className='Arrow' src={arrow_right} alt='Arrow right' onClick={() => moveHorizontally(1)} />
-              <p>{message}</p>
-            </div>
-          </div>
+          <StyledGridWrapper>
+            <StyledGrid>
+              <Stage stage={stage} />
+            </StyledGrid>
+          </StyledGridWrapper>
         </div>
+        <img className='Arrow' src={arrow_left} alt='Arrow left' onClick={() => moveHorizontally(-1)} />
+        <img className='Arrow' src={arrow_right} alt='Arrow right' onClick={() => moveHorizontally(1)} />
+        <p>{message}</p>
         {
           end === true &&
-          <Button type='Main-button' text='To Vast' handleClick={() => {
+          <Button type='Minigame-button' text='To Vast' handleClick={() => {
             setMiniGame(false)
             setStartEnabled(true)
             setMainScreen(true)

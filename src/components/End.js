@@ -27,7 +27,7 @@ const End = ({ setEnd, setMinigame }) => {
                             <a className='Link' href='http://www.orderofthegooddeath.com/' >The Order of a Good Death</a>
                             <br></br>
                             <div className='Centered'>
-                                <Button type='Main-button' text='Chapel (Revisited)' handleClick={() => {
+                                <Button type='Minigame-button' text='Chapel (Revisited)' handleClick={() => {
                                     setEnd('')
                                     setMinigame(true)
                                 }} />

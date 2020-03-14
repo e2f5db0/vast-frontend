@@ -20,10 +20,13 @@ const MainScreen = ({ startEnabled, setMainscreen, setCanvas, setAchievementList
             <img className='Logo' src={vast} alt='vast' />
             <div className='Body'>
                 <p>{message}</p>
-                {startButton && <Button type='Main-button' text='Start' handleClick={() => {
-                    setCanvas(true)
-                    setMainscreen(false)
-                }} />}
+                {
+                    startButton &&
+                    <Button type='Main-button' text='Start' handleClick={() => {
+                        setCanvas(true)
+                        setMainscreen(false)
+                    }} />
+                }
                 {
                     playIntro &&
                     <ReactAudioPlayer src={sound} autoPlay onEnded={() => {
@@ -31,27 +34,32 @@ const MainScreen = ({ startEnabled, setMainscreen, setCanvas, setAchievementList
                     }} />
                 }
                 <div className='Main-sound'>
-                    {!startButton && <p>Sound:</p>}
-                    <br></br>
-                    {!startButton && <Button type='Main-button' text={volume} handleClick={() => {
-                        setVolumeClicks(volumeClicks + 1)
-                        if (volume === 'on') {
-                            setVolume('off')
-                            setPlayIntro(true)
-                            setMessage('Now you can never turn it off.')
-                        }
-                        if (volumeClicks >= 2 && volumeClicks < 15) {
-                            setMessage('No matter how many times you try.')
-                        }
-                        if (volumeClicks >= 15) {
-                            setMessage('What is wrong with you?')
-                        }
-                    }} />}
+                    {
+                        !startButton &&
+                        <p>Sound:</p>
+                    }
+                    {
+                        !startButton &&
+                        <Button type='Main-button' text={volume} handleClick={() => {
+                            setVolumeClicks(volumeClicks + 1)
+                            if (volume === 'on') {
+                                setVolume('off')
+                                setPlayIntro(true)
+                                setMessage('Now you can never turn it off.')
+                            }
+                            if (volumeClicks >= 2 && volumeClicks < 15) {
+                                setMessage('No matter how many times you try.')
+                            }
+                            if (volumeClicks >= 15) {
+                                setMessage('What is wrong with you?')
+                            }
+                        }} />
+                    }
                 </div>
                 <div className='Button-stack'>
                     {
                         achievementService.hasAchievements(achievements, cache) &&
-                        <button className='Chapel-button' onClick={() => {
+                        <Button type='Chapel-button' text='Chapel' handleClick={() => {
                             if (achievementService.hasAchievement(achievements, cache, 'E')) {
                                 setChapelRevisited(true)
                                 setMainscreen(false)
@@ -59,13 +67,12 @@ const MainScreen = ({ startEnabled, setMainscreen, setCanvas, setAchievementList
                                 setChapel(true)
                                 setMainscreen(false)
                             }
-                        }} >Chapel
-                        </button>
+                        }} />
                     }
-                    <button className='Achievements-button' onClick={() => {
+                    <Button type='Achievements-button' text='Achievements' handleClick={() => {
                         setAchievementList(true)
                         setMainscreen(false)
-                    }} >Achievements</button>
+                    }} />
                 </div>
             </div>
         </div>

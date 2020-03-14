@@ -10,5 +10,6 @@ export const StyledGrid = styled.div`
   align-items: flex-start;
   padding: 15px;
   margin: 0 auto;
-  max-width: 900px;
+  max-width: 400px;
+  max-height: 500px;
 `
